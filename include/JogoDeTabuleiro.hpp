@@ -25,6 +25,8 @@ class JogoDeTabuleiro
     virtual void Reiniciar();
 
     virtual bool VerificarVitoria(char jogador) const = 0;
+
+    virtual void ExecutarPartida();
 };
 
 #endif

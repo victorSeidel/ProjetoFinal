@@ -44,3 +44,8 @@ void JogoDeTabuleiro::Reiniciar()
         std::fill(linha.begin(), linha.end(), '.');
     }
 }
+
+void JogoDeTabuleiro::ExecutarPartida()
+{
+    
+} 
