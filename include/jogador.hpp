@@ -14,9 +14,25 @@ class jogador{
     string nome;
     string apelido;
     public:
-    jogador(string nm,string apld){
+    jogador(string nm,string apld){ //para criar um jogador completamente novo
         this->nome = nm;
         this->apelido = apld;
+        this->vit_velha = 0;
+        this->derrt_velha = 0;
+        this->vit_rvrsi = 0;
+        this->derrt_rvrsi = 0;
+        this->vit_lig = 0;
+        this->derrt_lig = 0;
+    }
+    jogador(string nm,string apld,int vv,int dv,int vr,int dr,int vl,int dl){ //para criar um jogador a partir de um cadastro já salvo
+        this->nome = nm;
+        this->apelido = apld;
+        this->vit_velha = vv;
+        this->derrt_velha = dv;
+        this->vit_rvrsi =vr;
+        this->derrt_rvrsi = dr;
+        this->vit_lig = vl;
+        this->derrt_lig = dl;
     }
     void imprime_estatisticas(){
         cout << this->apelido << " " << this->nome << endl;
@@ -47,6 +63,11 @@ class jogador{
     }
     string get_apld(){
         return this->apelido;
+    }
+    string export_estatisticas(){
+        string expt;
+        expt = this->apelido + " " + this->nome + " " + (char) this->vit_velha + " " + (char) this->derrt_velha + " " + (char) this->vit_rvrsi + " " + (char)this->derrt_rvrsi + " " + (char)this->vit_lig + " " + (char)this->derrt_lig + '\n';
+        return expt;
     }
 };
 #endif

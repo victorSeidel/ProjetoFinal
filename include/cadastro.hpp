@@ -7,7 +7,7 @@
 using namespace std;
 class cadastro{
     private:
-    map<string,jogador> jogadores; //fiz assim para que possamos ordenar os jogadores em ordem alfabética, aí cada pode ter como chave o seu apelido, que é único
+    map<string,jogador> jogadores; //fiz assim para que possamos ordenar os jogadores em ordem alfabética, aí cada um deles pode ter como chave o seu apelido, que é único
     public:
     void add_jogador(jogador novo){
         this->jogadores.insert({novo.get_apld(),novo});
@@ -26,7 +26,7 @@ class cadastro{
         outpt.open("jogadores_salvos.txt", ios::app);
         map<string,jogador>::iterator it;
         for(it = this->jogadores.begin();it != this->jogadores.end();it++){
-            outpt << it->second.get_apld() << " " << it->second.get_nome() << endl;
+            outpt << it->second.export_estatisticas();
         }
         outpt.close();
     }
@@ -35,8 +35,9 @@ class cadastro{
         inpt.open("jogadores_salvos.txt", ios::in);
         while(!(inpt.eof())){
             string nm, apld;
-            inpt >> apld >> nm;
-            jogador novo(nm,apld);
+            int vv,dv,vr,dr,vl,dl;
+            inpt >> apld >> nm >> vv >> dv >> vr >> dr >> vl >> dl;
+            jogador novo(nm,apld,vv,dv,vr,dr,vl,dl);
             this->add_jogador(novo);
         }
     }
