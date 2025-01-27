@@ -94,3 +94,65 @@ bool Lig4::VerificarDirecao(int linha, int coluna, int dLinha, int dColuna, char
 
     return count == 4;
 }
+
+void Lig4::ExecutarPartida() 
+{
+    char jogadorAtual = 'X';
+    bool jogoAtivo = true;
+
+    std::cout << "----- Lig4 -----" << std::endl;
+
+    while (jogoAtivo) 
+    {
+        ImprimirTabuleiro();
+        int coluna;
+
+        std::cout << "Jogador " << jogadorAtual << ", escolha uma coluna (1 a 7): ";
+        std::cin >> coluna;
+
+        if (coluna < 0 || coluna > 7) 
+        {
+            std::cout << "Erro: Coluna inválida! Escolha entre 1 e 7." << std::endl;
+            continue;
+        }
+
+        try 
+        {
+            RealizarJogada(0, coluna - 1, jogadorAtual);
+
+            if (VerificarVitoria(jogadorAtual)) 
+            {
+                ImprimirTabuleiro();
+                std::cout << "Parabéns! O jogador " << jogadorAtual << " venceu!" << std::endl;
+                jogoAtivo = false;
+            } 
+            else 
+            {
+                jogadorAtual = (jogadorAtual == 'X') ? 'O' : 'X';
+            }
+        } 
+        catch (const std::invalid_argument& e) 
+        {
+            std::cout << e.what() << std::endl;
+        }
+
+        bool empate = true;
+        for (int i = 0; i < 7; ++i) 
+        {
+            if (JogadaValida(0, i)) 
+            {
+                empate = false;
+                break;
+            }
+        }
+
+        if (empate) 
+        {
+            ImprimirTabuleiro();
+            std::cout << "O jogo terminou em empate!" << std::endl;
+            jogoAtivo = false;
+        }
+    }
+
+    std::cout << "----- Fim do Jogo! -----" << std::endl;
+}

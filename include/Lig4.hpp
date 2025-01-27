@@ -20,6 +20,8 @@ class Lig4 : public JogoDeTabuleiro
 
     bool VerificarVitoria(char jogador) const override;
 
+    void ExecutarPartida() override;
+
     private:
     bool VerificarDirecao(int linha, int coluna, int deltaLinha, int deltaColuna, char jogador) const;
 };
