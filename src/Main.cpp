@@ -14,6 +14,8 @@ int main()
     int opcao;
     std::cin >> opcao;
 
+    cadastro cadastro;
+
     switch(opcao)
     {
         case 1:
@@ -32,15 +34,14 @@ int main()
         case 2:
             std::cout << "----- Cadastrar Novo Jogador ----- \n";
 
-            cadastro cad;
-            cad.cadastrar_jogador();
+            cadastro.cadastrar_jogador();
+            cadastro.export_jgdrs();
             
             break;
         case 3:
             std::cout << "----- Lista de Jogadores ----- \n";
 
-            cadastro cad;
-            cad.listar_jgdrs();
+            cadastro.listar_jgdrs();
 
             break;
         default:
