@@ -150,9 +150,3 @@ void Lig4::ExecutarPartida()
         }
     }
 }
-
-int main()
-{
-    Lig4 jogo;
-    jogo.ExecutarPartida();
-}

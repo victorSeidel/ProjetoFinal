@@ -31,19 +31,16 @@ void ExecutarPartida::IniciarJogo()
         {
             case 1:
                 jogo = new Reversi();  // Cria uma instância de Reversi
-                jogo->Reiniciar();
                 jogo->ExecutarPartida(); // Método que inicia a partida
                 break;
 
             case 2:
                 jogo = new Lig4();  // Cria uma instância de Lig4
-                jogo->Reiniciar();
                 jogo->ExecutarPartida(); // Método que inicia a partida
                 break;  
 
             case 3:
                 //jogo = new JogoDaVelha();  // Cria uma instância de Jogo da Velha
-                //jogo->Reiniciar();
                 //jogo->ExecutarPartida(); // Método que inicia a partida
                 break;
    
