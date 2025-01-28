@@ -1,12 +1,11 @@
-#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
-#include "../include/JogoDeTabuleiro.hpp"
 #include "../include/Lig4.hpp"
 
 TEST_CASE("Jogada válida") 
 {
     Lig4 jogo;
     jogo.Reiniciar();
+    
     CHECK(jogo.JogadaValida(0, 0) == true);
     CHECK(jogo.JogadaValida(0, 6) == true);
 }
