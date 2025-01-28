@@ -19,8 +19,7 @@ void Lig4::ImprimirTabuleiro() const
 
 bool Lig4::JogadaValida(int linha, int coluna) const 
 {
-    if (coluna < 0 || coluna >= colunas) 
-        return false;
+    if (coluna < 0 || coluna >= colunas) return false;
 
     return tabuleiro[0][coluna] == '.'; // Verifica se a coluna não está cheia
 }
