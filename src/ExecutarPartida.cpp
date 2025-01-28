@@ -8,8 +8,10 @@ void IniciarPartida::IniciarJogo() {
     while (jogarNovamente) {
         std::cout << "Escolha um jogo para jogar:\n";
         std::cout << "1. Reversi\n";
+        std::cout << "2. Jogo da velha\n";
+        std::cout << "3. Lig4\n";
         // Adicione mais jogos aqui conforme necessário.
-        std::cout << "Digite sua escolha (1): ";
+        std::cout << "Digite sua escolha: ";
         std::cin >> escolha;
 
         JogoDeTabuleiro* jogo;
@@ -18,6 +20,12 @@ void IniciarPartida::IniciarJogo() {
             case 1:
                 jogo = new Reversi();  // Cria uma instância de Reversi
                 break;
+            case 2:
+                jogo = new JogoDaVelha();  // Cria uma instância de Jogo da Velha
+                break;
+            case 3:
+                jogo = new Lig4();  // Cria uma instância de Lig4
+                break;    
             default:
                 std::cout << "Escolha inválida!\n";
                 return;
