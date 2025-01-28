@@ -35,7 +35,19 @@ void ExecutarPartida::IniciarJogo(jogador& jogador1, jogador& jogador2)
 
             case 2:
                 jogo = new Lig4();  // Cria uma instância de Lig4
-                jogo->ExecutarPartida(); // Método que inicia a partida
+                int j = jogo->ExecutarPartida(); // Método que inicia a partida
+
+                if (j == 1) 
+                {
+                    jogador1.add_vit("lig");
+                    jogador1.add_derrt("lig");
+                }
+                else if (j == 2)
+                {
+                    jogador2.add_vit("lig");
+                    jogador2.add_derrt("lig");
+                }
+
                 break;  
 
             case 3:

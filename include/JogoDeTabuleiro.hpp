@@ -23,7 +23,7 @@ class JogoDeTabuleiro
         virtual void RealizarJogada(int linha, int coluna, char jogador) = 0;
         virtual void Reiniciar() = 0;
         virtual bool VerificarVitoria(char jogador) const = 0;
-        virtual void ExecutarPartida() = 0;
+        virtual int ExecutarPartida() = 0;
 };
 
 #endif

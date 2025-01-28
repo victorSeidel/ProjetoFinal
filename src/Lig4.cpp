@@ -91,9 +91,10 @@ bool Lig4::VerificarDirecao(int linha, int coluna, int dLinha, int dColuna, char
     return count == 4;
 }
 
-void Lig4::ExecutarPartida() 
+int Lig4::ExecutarPartida() 
 {
     char jogadorAtual = 'X';
+    int jogador = 0;
     bool jogoAtivo = true;
 
     std::cout << "----- Lig4 -----" << std::endl;
@@ -120,6 +121,10 @@ void Lig4::ExecutarPartida()
             if (VerificarVitoria(jogadorAtual)) 
             {
                 std::cout << "O jogador " << jogadorAtual << " venceu!" << std::endl;
+
+                if (jogadorAtual == 'X') jogador = 1;
+                else if (jogadorAtual == 'O') jogador = 2;
+
                 jogoAtivo = false;
             } 
             else 
@@ -149,4 +154,6 @@ void Lig4::ExecutarPartida()
             jogoAtivo = false;
         }
     }
+
+    return jogador;
 }
