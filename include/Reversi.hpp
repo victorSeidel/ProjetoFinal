@@ -21,13 +21,13 @@ public:
     virtual ~Reversi() override = default;
 
     // Métodos sobrescritos
-    virtual void Jogar() override;
+    virtual int Jogar() override;
     virtual void ImprimirTabuleiro() const override;
     virtual bool JogadaValida(int linha, int coluna) const override;
     virtual void RealizarJogada(int linha, int coluna, char jogador) override;
     virtual void Reiniciar() override;
     virtual bool VerificarVitoria(char jogador) const override;
-    virtual void ExecutarPartida() override;
+    virtual int ExecutarPartida() override;
 };
 
 #endif
