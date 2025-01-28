@@ -24,10 +24,30 @@ JogoDaVelha::JogoDaVelha():JogoDeTabuleiro::JogoDeTabuleiro(3,3){}
             return false;
         }
     }
+    void JogoDaVelha::ImprimirTabuleiro(){
+    for (const auto& linha : tabuleiro) 
+    {
+        for (char celula : linha)
+        {
+            std::cout << celula << " ";
+        }
+
+        std::cout << "\n";
+    }
+}
+bool JogoDaVelha::JogadaValida(int linha, int coluna){
+    return linha >= 0 && linha < linhas && coluna >= 0 && coluna < colunas && tabuleiro[linha][coluna] == '.';
+}
     void JogoDaVelha::RealizarJogada(int linha, int coluna, char jogador){
         this->tabuleiro[linha - 1][coluna - 1] = jogador;
     }
-    void JogoDaVelha::ExecutarPartida(jogador& j1, jogador& j2){
+    void JogoDaVelha::Reiniciar(){
+    for (auto& linha : tabuleiro) 
+    {
+        std::fill(linha.begin(), linha.end(), '.');
+    }
+}
+    int JogoDaVelha::ExecutarPartida(jogador& j1, jogador& j2){
         std::cout << "As jogadas de " << j1.get_apld() << " serão representadas por um X, enquanto as jogadas de " << j2.get_apld() << " serão representadas por um O." << std::endl;
         int num_jogadas = 0;
         while(num_jogadas < 9){
@@ -51,7 +71,7 @@ JogoDaVelha::JogoDaVelha():JogoDeTabuleiro::JogoDeTabuleiro(3,3){}
                     std::cout << j1.get_apld() << "ganhou !" << std::endl;
                     j1.add_vit("velha");
                     num_jogadas = 0;
-                    break;
+                    return 1;
                 }else{
                     continue;
                 }
@@ -72,7 +92,7 @@ JogoDaVelha::JogoDaVelha():JogoDeTabuleiro::JogoDeTabuleiro(3,3){}
                     std::cout << j2.get_apld() << "ganhou !" << std::endl;
                     j2.add_vit("velha");
                     num_jogadas = 0;
-                    break;
+                    return 2;
                 }else{
                     continue;
                 }
@@ -83,4 +103,7 @@ JogoDaVelha::JogoDaVelha():JogoDeTabuleiro::JogoDeTabuleiro(3,3){}
             std::cout << "O jogo terminou empatado." << std::endl;
         }
         this->Reiniciar();
+    }
+    int JogoDaVelha::Jogar(jogador& j1, jogador& j2){
+        return this->ExecutarPartida(j1,j2);
     }
