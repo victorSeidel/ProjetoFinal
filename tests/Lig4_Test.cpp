@@ -1,3 +1,4 @@
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 #include "../include/Lig4.hpp"
 
@@ -30,6 +31,34 @@ TEST_CASE("Jogada inválida fora dos limites")
 
     CHECK(jogo.JogadaValida(0, -1) == false);
     CHECK(jogo.JogadaValida(0, 7) == false);
+}
+
+TEST_CASE("Preenchimento parcial de coluna") 
+{
+    Lig4 jogo;
+    jogo.Reiniciar();
+
+    for (int i = 0; i < 3; ++i) 
+    {
+        jogo.RealizarJogada(0, 0, 'X');
+    }
+
+    CHECK(jogo.JogadaValida(0, 0) == true); // Ainda há espaço na coluna
+    
+    jogo.RealizarJogada(0, 0, 'O');
+    CHECK(jogo.JogadaValida(0, 0) == false); // Agora a coluna está cheia
+}
+
+TEST_CASE("Alternância de jogadores") 
+{
+    Lig4 jogo;
+    jogo.Reiniciar();
+
+    jogo.RealizarJogada(0, 0, 'X');
+    CHECK(jogo.JogadaValida(0, 0) == true);
+
+    jogo.RealizarJogada(0, 1, 'O');
+    CHECK(jogo.JogadaValida(0, 1) == true);
 }
 
 TEST_CASE("Vitória horizontal") 
