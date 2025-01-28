@@ -15,7 +15,7 @@ private:
     void VirarDiscos(int linha, int coluna, int dirLinha, int dirColuna);
     bool PodeJogar(char jogador) const;
     bool ConverterEntrada(const std::string& entrada, int& linha, int& coluna) const;
-
+    void ExibirInstrucoes() const;
 public:
     Reversi();
     virtual ~Reversi() override = default;

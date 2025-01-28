@@ -7,6 +7,19 @@
 Reversi::Reversi() : JogoDeTabuleiro(8, 8), jogadorAtual('X'), jogoFinalizado(false) {
     Reiniciar();
 }
+    //Exibir instruções
+void Reversi::ExibirInstrucoes() const {
+    std::cout << "\n=== REVERSI ===\n";
+    std::cout << "Instrucoes:\n";
+    std::cout << "1. Objetivo: Ter mais pecas (" << jogadorAtual << ") no tabuleiro\n";
+    std::cout << "2. Coloque uma peca que flanqueie as pecas do oponente\n";
+    std::cout << "3. Flanquear = cercar pecas adversarias em linha reta (horizontal, vertical ou diagonal)\n";
+    std::cout << "4. Formato: Letra (coluna) + Numero (linha). Ex: C4\n";
+    std::cout << "5. Comandos:\n";
+    std::cout << "   - 'sair': Encerra o jogo\n";
+    std::cout << "   - 'instrucoes': Mostra este guia\n";
+    std::cout << "------------------------------------------------\n";
+}
 
 // Impressão do tabuleiro com coordenadas
 void Reversi::ImprimirTabuleiro() const {
@@ -91,7 +104,7 @@ void Reversi::RealizarJogada(int linha, int coluna, char jogador) {
         if (!PodeJogar(jogador)) {
             jogoFinalizado = true;
         } else {
-            std::cout << "Jogador " << proximoJogador << " não pode jogar. Turno mantido.\n";
+            std::cout << "Jogador " << proximoJogador << " nao pode jogar. Turno mantido.\n";
         }
     }
     jogadorAtual = proximoJogador;
@@ -128,34 +141,45 @@ bool Reversi::VerificarVitoria(char jogador) const {
 // Loop principal totalmente funcional
 void Reversi::ExecutarPartida() {
     std::string entrada;
+    bool instrucoesMostradas = false;
+
     while (!jogoFinalizado) {
+        if (!instrucoesMostradas) {
+            ExibirInstrucoes();
+            instrucoesMostradas = true;
+        }
         // Verifica se o jogador atual pode jogar
         if (!PodeJogar(jogadorAtual)) {
             if (!PodeJogar((jogadorAtual == 'X') ? 'O' : 'X')) {
                 jogoFinalizado = true;
                 break;
             }
-            std::cout << "Jogador " << jogadorAtual << " não pode jogar. Passando a vez.\n";
+            std::cout << "Jogador " << jogadorAtual << " nao pode jogar. Passando a vez.\n";
             jogadorAtual = (jogadorAtual == 'X') ? 'O' : 'X';
             continue;
         }
 
         ImprimirTabuleiro();
-        std::cout << "\nJogador " << jogadorAtual << ", insira uma posição (ex: A1) ou 'sair': ";
+        std::cout << "\nJogador " << jogadorAtual << ", insira uma posicao (ex: A1), ";
+        std::cout << "'sair' ou 'instrucoes': "; // Atualizado
         std::cin >> entrada;
 
         if (entrada == "sair") break;
+        if (entrada == "instrucoes") { // Novo comando
+            ExibirInstrucoes();
+            continue;
+        }
 
         int linha, coluna;
         if (!ConverterEntrada(entrada, linha, coluna)) {
-            std::cout << "Formato inválido! Use letra+número (ex: A1)\n";
+            std::cout << "Formato invalido! Use letra+numero (ex: A1)\n";
             continue;
         }
 
         if (JogadaValida(linha, coluna)) {
             RealizarJogada(linha, coluna, jogadorAtual);
         } else {
-            std::cout << "Jogada inválida!\n";
+            std::cout << "Jogada invalida!\n";
         }
 
         // Verifica se o tabuleiro está cheio
@@ -215,9 +239,20 @@ bool Reversi::PodeJogar(char jogador) const {
 }
 
 bool Reversi::ConverterEntrada(const std::string& entrada, int& linha, int& coluna) const {
-    if (entrada.size() < 2 || !isalpha(entrada[0]) || !isdigit(entrada[1])) return false;
-    
+    if (entrada.empty() || !isalpha(entrada[0])) return false;
+
+    // Extrair parte numérica (tudo após a letra)
+    size_t i = 1;
+    while (i < entrada.size() && isdigit(entrada[i])) {
+        i++;
+    }
+    std::string parteNumerica = entrada.substr(1, i - 1);
+    if (parteNumerica.empty()) return false;
+
+    // Converter letra para coluna (A-H)
     coluna = toupper(entrada[0]) - 'A';
-    linha = entrada[1] - '1';
+    // Converter número para linha (1-8)
+    linha = stoi(parteNumerica) - 1; // Subtrai 1 para índice 0-based
+
     return (linha >= 0 && linha < linhas && coluna >= 0 && coluna < colunas);
 }
