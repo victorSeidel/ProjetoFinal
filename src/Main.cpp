@@ -1,7 +1,7 @@
 #include "ExecutarPartida.hpp"
 #include "Cadastro.hpp"
 
-#include "<iostream>"
+#include <iostream>
 
 int main() 
 {
