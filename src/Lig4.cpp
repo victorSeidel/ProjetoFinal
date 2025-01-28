@@ -1,4 +1,4 @@
-#include "Lig4.hpp"
+#include "../include/Lig4.hpp"
 
 Lig4::Lig4() : JogoDeTabuleiro(6, 7) {}
 
@@ -22,7 +22,7 @@ bool Lig4::JogadaValida(int linha, int coluna) const
     if (coluna < 0 || coluna >= colunas) 
         return false;
 
-    return tabuleiro[0][coluna] == 0; // Verifica se a coluna não está cheia
+    return tabuleiro[0][coluna] == '.'; // Verifica se a coluna não está cheia
 }
 
 void Lig4::RealizarJogada(int linha, int coluna, char jogador) 
@@ -35,7 +35,7 @@ void Lig4::RealizarJogada(int linha, int coluna, char jogador)
     // Encontra a posição mais baixa disponível na coluna
     for (int i = linhas - 1; i >= 0; --i) 
     {
-        if (tabuleiro[i][coluna] == 0) 
+        if (tabuleiro[i][coluna] == '.') 
         {
             tabuleiro[i][coluna] = jogador;
             break;
@@ -47,7 +47,7 @@ void Lig4::Reiniciar()
 {
     for (auto& linha : tabuleiro) 
     {
-        std::fill(linha.begin(), linha.end(), 0);
+        std::fill(linha.begin(), linha.end(), '.');
     }
 }
 
@@ -83,13 +83,10 @@ bool Lig4::VerificarDirecao(int linha, int coluna, int dLinha, int dColuna, char
         int novaLinha = linha + k * dLinha;
         int novaColuna = coluna + k * dColuna;
 
-        if (novaLinha < 0 || novaLinha >= linhas || novaColuna < 0 || novaColuna >= colunas) 
-            return false;
+        if (novaLinha < 0 || novaLinha >= linhas || novaColuna < 0 || novaColuna >= colunas) return false;
 
-        if (tabuleiro[novaLinha][novaColuna] == jogador) 
-            ++count;
-        else 
-            break;
+        if (tabuleiro[novaLinha][novaColuna] == jogador) ++count;
+        else break;
     }
 
     return count == 4;
@@ -112,18 +109,18 @@ void Lig4::ExecutarPartida()
 
         if (coluna < 0 || coluna > 7) 
         {
-            std::cout << "Erro: Coluna inválida! Escolha entre 1 e 7." << std::endl;
+            std::cout << "Erro: Jogada inválida! Escolha uma coluna de 1 a 7." << std::endl;
             continue;
         }
 
         try 
         {
             RealizarJogada(0, coluna - 1, jogadorAtual);
+            ImprimirTabuleiro();
 
             if (VerificarVitoria(jogadorAtual)) 
             {
-                ImprimirTabuleiro();
-                std::cout << "Parabéns! O jogador " << jogadorAtual << " venceu!" << std::endl;
+                std::cout << "O jogador " << jogadorAtual << " venceu!" << std::endl;
                 jogoAtivo = false;
             } 
             else 
@@ -133,7 +130,7 @@ void Lig4::ExecutarPartida()
         } 
         catch (const std::invalid_argument& e) 
         {
-            std::cout << e.what() << std::endl;
+            std::cout << "Erro: " << e.what() << std::endl;
         }
 
         bool empate = true;
