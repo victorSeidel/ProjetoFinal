@@ -193,17 +193,25 @@ void Reversi::ExecutarPartida() {
         if (tabuleiroCheio) jogoFinalizado = true;
     }
 
-    // Resultado final
-    ImprimirTabuleiro();
-    std::cout << "\n--- Fim do Jogo! ---\n";
-    if (VerificarVitoria('X') && VerificarVitoria('O')) {
-        std::cout << "Empate!\n";
-    } else if (VerificarVitoria('X')) {
-        std::cout << "Jogador X venceu!\n";
-    } else {
-        std::cout << "Jogador O venceu!\n";
-    }
-}
+        // Resultado final
+        ImprimirTabuleiro();
+        std::cout << "\n--- Fim do Jogo! ---\n";
+
+        int countX = 0, countO = 0;
+        for (const auto& linha : tabuleiro) {
+            for (char c : linha) {
+                if (c == 'X') countX++;
+            else if (c == 'O') countO++;
+            }
+        }
+
+        if (countX == countO) {
+            std::cout << "Empate!\n";
+        } else if (VerificarVitoria('X')) {
+            std::cout << "Jogador X venceu!\n";
+        } else {
+            std::cout << "Jogador O venceu!\n";
+        }
 
 // Métodos auxiliares
 bool Reversi::PodeJogar(char jogador) const {
@@ -255,4 +263,5 @@ bool Reversi::ConverterEntrada(const std::string& entrada, int& linha, int& colu
     linha = stoi(parteNumerica) - 1; // Subtrai 1 para índice 0-based
 
     return (linha >= 0 && linha < linhas && coluna >= 0 && coluna < colunas);
+}
 }
