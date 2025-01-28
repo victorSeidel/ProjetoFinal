@@ -5,8 +5,8 @@
 class JogoDaVelha: public JogoDeTabuleiro{
     public:
     JogoDaVelha();
-    bool VerificarVitoria(jogador&,jogador&);
+    bool VerificarVitoria(char)const;
     void RealizarJogada(int, int , char);
-    void Executar_Partida(jogador&, jogador& );
+    void ExecutarPartida(jogador&, jogador& );
 };
 #endif
