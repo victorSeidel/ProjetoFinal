@@ -3,8 +3,8 @@
 #include <algorithm>
 #include <cctype>
 
-void Reversi::Jogar() {
-    ExecutarPartida(); // Chama o loop principal do jogo
+int Reversi::Jogar() {
+    return ExecutarPartida(); // Chama o loop principal do jogo
 }
 
 // Construtor
@@ -143,7 +143,7 @@ bool Reversi::VerificarVitoria(char jogador) const {
 }
 
 // Loop principal totalmente funcional
-void Reversi::ExecutarPartida() {
+int Reversi::ExecutarPartida() {
     std::string entrada;
     bool instrucoesMostradas = false;
 
@@ -213,8 +213,10 @@ void Reversi::ExecutarPartida() {
             std::cout << "Empate!\n";
         } else if (VerificarVitoria('X')) {
             std::cout << "Jogador X venceu!\n";
+            return 1;
         } else {
             std::cout << "Jogador O venceu!\n";
+            return 2;
         }
 }
 // Métodos auxiliares

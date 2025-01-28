@@ -47,7 +47,7 @@ bool JogoDaVelha::JogadaValida(int linha, int coluna){
         std::fill(linha.begin(), linha.end(), '.');
     }
 }
-    void JogoDaVelha::ExecutarPartida(jogador& j1, jogador& j2){
+    int JogoDaVelha::ExecutarPartida(jogador& j1, jogador& j2){
         std::cout << "As jogadas de " << j1.get_apld() << " serão representadas por um X, enquanto as jogadas de " << j2.get_apld() << " serão representadas por um O." << std::endl;
         int num_jogadas = 0;
         while(num_jogadas < 9){
@@ -71,7 +71,7 @@ bool JogoDaVelha::JogadaValida(int linha, int coluna){
                     std::cout << j1.get_apld() << "ganhou !" << std::endl;
                     j1.add_vit("velha");
                     num_jogadas = 0;
-                    break;
+                    return 1;
                 }else{
                     continue;
                 }
@@ -92,7 +92,7 @@ bool JogoDaVelha::JogadaValida(int linha, int coluna){
                     std::cout << j2.get_apld() << "ganhou !" << std::endl;
                     j2.add_vit("velha");
                     num_jogadas = 0;
-                    break;
+                    return 2;
                 }else{
                     continue;
                 }
@@ -104,6 +104,6 @@ bool JogoDaVelha::JogadaValida(int linha, int coluna){
         }
         this->Reiniciar();
     }
-    void JogoDaVelha::Jogar(jogador& j1, jogador& j2){
-        this->ExecutarPartida(j1,j2);
+    int JogoDaVelha::Jogar(jogador& j1, jogador& j2){
+        return this->ExecutarPartida(j1,j2);
     }
