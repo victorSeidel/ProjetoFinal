@@ -1,5 +1,5 @@
 #include "ExecutarPartida.hpp"
-//#include "JogoDaVelha.hpp"
+#include "JogoDaVelha.hpp"
 #include "Reversi.hpp"
 #include "Lig4.hpp"
 
@@ -63,8 +63,8 @@ void ExecutarPartida::IniciarJogo(jogador& jogador1, jogador& jogador2)
                 break;  
 
             case 3:
-                //jogo = new JogoDaVelha();  // Cria uma instância de Jogo da Velha
-                //int j = jogo->Jogar(); // Método que inicia a partida
+                jogo = new JogoDaVelha();  // Cria uma instância de Jogo da Velha
+                int j = jogo->Jogar(); // Método que inicia a partida
 
                 if (j == 1) 
                 {
