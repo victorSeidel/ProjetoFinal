@@ -30,7 +30,19 @@ void ExecutarPartida::IniciarJogo(jogador& jogador1, jogador& jogador2)
         {
             case 1:
                 jogo = new Reversi();  // Cria uma instância de Reversi
-                jogo->Jogar(); // Método que inicia a partida
+                int j = jogo->Jogar(); // Método que inicia a partida
+
+                if (j == 1) 
+                {
+                    jogador1.add_vit("reversi");
+                    jogador2.add_derrt("reversi");
+                }
+                else if (j == 2)
+                {
+                    jogador2.add_vit("reversi");
+                    jogador1.add_derrt("reversi");
+                }
+
                 break;
 
             case 2:
@@ -40,12 +52,12 @@ void ExecutarPartida::IniciarJogo(jogador& jogador1, jogador& jogador2)
                 if (j == 1) 
                 {
                     jogador1.add_vit("lig");
-                    jogador1.add_derrt("lig");
+                    jogador2.add_derrt("lig");
                 }
                 else if (j == 2)
                 {
                     jogador2.add_vit("lig");
-                    jogador2.add_derrt("lig");
+                    jogador1.add_derrt("lig");
                 }
 
                 break;  
