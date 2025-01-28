@@ -64,7 +64,19 @@ void ExecutarPartida::IniciarJogo(jogador& jogador1, jogador& jogador2)
 
             case 3:
                 //jogo = new JogoDaVelha();  // Cria uma instância de Jogo da Velha
-                //jogo->ExecutarPartida(); // Método que inicia a partida
+                //int j = jogo->Jogar(); // Método que inicia a partida
+
+                if (j == 1) 
+                {
+                    jogador1.add_vit("velha");
+                    jogador2.add_derrt("velha");
+                }
+                else if (j == 2)
+                {
+                    jogador2.add_vit("velha");
+                    jogador1.add_derrt("velha");
+                }
+
                 break;
    
             default:
