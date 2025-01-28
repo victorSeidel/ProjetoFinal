@@ -7,7 +7,7 @@
 #include "JogoDaVelha.hpp"
 #include "Lig4.hpp"
 
-class IniciarPartida {
+class ExecutarPartida {
 public:
     void IniciarJogo();
 };

@@ -1,9 +1,14 @@
 #include "ExecutarPartida.hpp"
+//#include "JogoDaVelha.hpp"
+#include "Reversi.hpp"
+#include "Lig4.hpp"
 
-void IniciarPartida::IniciarJogo() {
+void ExecutarPartida::IniciarJogo() {
     int escolha;
     int vitoriasJogador1 = 0, vitoriasJogador2 = 0;
     bool jogarNovamente = true;
+    std::string nomeJogador1, nomeJogador2;
+    char jogadorAtual = 'X';
 
     while (jogarNovamente) {
         // Solicitando os nomes dos jogadores
@@ -14,8 +19,8 @@ void IniciarPartida::IniciarJogo() {
 
         std::cout << "Escolha um jogo para jogar:\n";
         std::cout << "1. Reversi\n";
-        std::cout << "2. Jogo da velha\n";
-        std::cout << "3. Lig4\n";
+        std::cout << "2. Lig4\n";
+        std::cout << "3. Jogo da velha\n";
         // Adicione mais jogos aqui conforme necessário.
         std::cout << "Digite sua escolha: ";
         std::cin >> escolha;
@@ -25,20 +30,21 @@ void IniciarPartida::IniciarJogo() {
         switch (escolha) { // Adicionar os outros jogos conforme necessário
             case 1:
                 jogo = new Reversi();  // Cria uma instância de Reversi
+                jogo->Jogar(); // Método que inicia a partida
                 break;
             case 2:
-                jogo = new JogoDaVelha();  // Cria uma instância de Jogo da Velha
-                break;
-            case 3:
                 jogo = new Lig4();  // Cria uma instância de Lig4
-                break;    
+                jogo->Jogar(); // Método que inicia a partida
+                break;                 
+            //case 3:
+               // jogo = new JogoDaVelha();  // Cria uma instância de Jogo da Velha
+               //jogo->Jogar(); // Método que inicia a partida
+                // break;
+   
             default:
                 std::cout << "Escolha inválida!\n";
                 return;
         }
-
-        std::string nomeJogador1, nomeJogador2;
-        char jogadorAtual = 'X';
 
         // Exibindo as estatísticas após cada partida
         std::cout << "\n--- Fim de Jogo ---\n";
