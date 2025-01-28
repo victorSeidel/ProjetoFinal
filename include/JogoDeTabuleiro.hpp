@@ -5,7 +5,7 @@
 #include <iostream>
 
 /**
- * @brief Classe genértica com funções comuns para os jogos de tabuleiro.
+ * @brief Classe genérica com funções comuns para todos os jogos de tabuleiro.
  */
 class JogoDeTabuleiro 
 {
