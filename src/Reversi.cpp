@@ -212,7 +212,7 @@ void Reversi::ExecutarPartida() {
         } else {
             std::cout << "Jogador O venceu!\n";
         }
-
+}
 // Métodos auxiliares
 bool Reversi::PodeJogar(char jogador) const {
     for (int l = 0; l < linhas; ++l) {
@@ -264,4 +264,4 @@ bool Reversi::ConverterEntrada(const std::string& entrada, int& linha, int& colu
 
     return (linha >= 0 && linha < linhas && coluna >= 0 && coluna < colunas);
 }
-}
+
