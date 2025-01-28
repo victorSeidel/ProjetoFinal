@@ -2,34 +2,39 @@
 CC = g++
 
 # Flags de compilação
-CFLAGS = -Wall -Wextra -std=c++11
+CFLAGS = -Wall -Wextra -std=c++11 -Iinclude
 
 # Nome do executável
-TARGET = jogo
+TARGET = PROJECTOFINAL
+
+# Diretórios
+SRC_DIR = output
+BUILD_DIR = build
 
 # Lista de arquivos fonte (.cpp)
-SOURCES = main.cpp ExecutarPartida.cpp reversi.cpp Lig4.cpp JogoDaVelha.cpp JogoDeTabuleiro.cpp Cadastro.cpp Jogador.cpp 
+SOURCES = $(wildcard $(SRC_DIR)/*.cpp)
+OBJECTS = $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SOURCES))
 
-# Lista de arquivos objeto (.o)
-OBJECTS = $(SOURCES:.cpp=.o)
+# Cabeçalhos
+HEADERS = $(wildcard include/*.hpp)
 
-# Cabeçalhos (headers)
-HEADERS = ExecutarPartida.hpp Reversi.hpp Lig4.hpp JogoDaVelha.hpp JogoDeTabuleiro.hpp Cadastro.hpp Jogador.hpp
+# Regra padrão
+all: $(BUILD_DIR) $(TARGET)
 
-# Regra padrão: compila o executável
-all: $(TARGET)
+# Cria diretório de build
+$(BUILD_DIR):
+	mkdir -p $(BUILD_DIR)
 
-# Regra para compilar o executável
-$(TARGET): $(OBJECTS)
+# Regra para o executável
+$(TARGET).exe: $(OBJECTS)
 	$(CC) $(CFLAGS) $^ -o $@
 
-# Regra genérica para compilar arquivos .cpp em .o
-%.o: %.cpp $(HEADERS)
+# Regra para arquivos objeto
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Remove arquivos objeto e o executável
+# Limpeza
 clean:
-	rm -f $(OBJECTS) $(TARGET)
+	rm -rf $(BUILD_DIR) $(TARGET)
 
-# Marca as regras que não são arquivos
 .PHONY: all clean
