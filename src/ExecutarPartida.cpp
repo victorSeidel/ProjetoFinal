@@ -48,8 +48,8 @@ void ExecutarPartida::IniciarJogo() {
 
         // Exibindo as estatísticas após cada partida
         std::cout << "\n--- Fim de Jogo ---\n";
-        std::cout << "Vitórias de " << nomeJogador1 << " (X): " << vitoriasJogador1 << std::endl;
-        std::cout << "Vitórias de " << nomeJogador2 << " (O): " << vitoriasJogador2 << std::endl;
+        std::cout << "Vitorias de " << nomeJogador1 << " (X): " << vitoriasJogador1 << std::endl;
+        std::cout << "Vitorias de " << nomeJogador2 << " (O): " << vitoriasJogador2 << std::endl;
 
         // Pergunta se o usuário deseja jogar novamente ou mudar de jogo
         char resposta;
@@ -60,7 +60,7 @@ void ExecutarPartida::IniciarJogo() {
             std::cin >> resposta;
             if (resposta == 'n' || resposta == 'N') {
                 jogarNovamente = false;
-                std::cout << "Obrigado por jogar! Até a próxima!" << std::endl;
+                std::cout << "Obrigado por jogar! Ate a proxima!" << std::endl;
             } else {
                 jogo->Reiniciar(); // Reinicia o jogo atual, se necessário
             }
