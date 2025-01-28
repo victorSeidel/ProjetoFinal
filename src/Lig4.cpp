@@ -103,7 +103,7 @@ void Lig4::ExecutarPartida()
         ImprimirTabuleiro();
         int coluna;
 
-        std::cout << "Jogador " << jogadorAtual << ", escolha uma coluna (1 a 7): ";
+        std::cout << std::endl << "Jogador " << jogadorAtual << ", escolha uma coluna (1 a 7): ";
         std::cin >> coluna;
 
         if (coluna < 0 || coluna > 7) 
@@ -149,6 +149,10 @@ void Lig4::ExecutarPartida()
             jogoAtivo = false;
         }
     }
+}
 
-    std::cout << "----- Fim do Jogo! -----" << std::endl;
+int main()
+{
+    Lig4 jogo;
+    jogo.ExecutarPartida();
 }
