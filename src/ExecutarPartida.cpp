@@ -6,6 +6,12 @@ void IniciarPartida::IniciarJogo() {
     bool jogarNovamente = true;
 
     while (jogarNovamente) {
+        // Solicitando os nomes dos jogadores
+        std::cout << "Digite o nome do Jogador 1 (X): ";
+        std::cin >> nomeJogador1;
+        std::cout << "Digite o nome do Jogador 2 (O): ";
+        std::cin >> nomeJogador2;
+
         std::cout << "Escolha um jogo para jogar:\n";
         std::cout << "1. Reversi\n";
         std::cout << "2. Jogo da velha\n";
@@ -33,39 +39,6 @@ void IniciarPartida::IniciarJogo() {
 
         std::string nomeJogador1, nomeJogador2;
         char jogadorAtual = 'X';
-        int linha, coluna;
-        bool jogoAtivo = true;
-
-        // Solicitando os nomes dos jogadores
-        std::cout << "Digite o nome do Jogador 1 (X): ";
-        std::cin >> nomeJogador1;
-        std::cout << "Digite o nome do Jogador 2 (O): ";
-        std::cin >> nomeJogador2;
-
-        // Executando a partida
-        while (jogoAtivo) {
-            jogo->ImprimirTabuleiro();
-
-            std::cout << "É a vez de " << (jogadorAtual == 'X' ? nomeJogador1 : nomeJogador2)
-                      << " (" << (jogadorAtual == 'X' ? 'X' : 'O') << "), insira sua jogada (linha e coluna): ";
-            std::cin >> linha >> coluna;
-
-            jogo->RealizarJogada(linha - 1, coluna - 1, jogadorAtual); // Ajuste para índice 0
-            if (jogo->VerificarVitoria(jogadorAtual)) {
-                jogo->ImprimirTabuleiro();
-                std::cout << "Jogador " << (jogadorAtual == 'X' ? nomeJogador1 : nomeJogador2) << " venceu!" << std::endl;
-
-                // Atualizando as estatísticas dos jogadores
-                if (jogadorAtual == 'X')
-                    vitoriasJogador1++;
-                else
-                    vitoriasJogador2++;
-
-                jogoAtivo = false;
-            } else {
-                jogadorAtual = (jogadorAtual == 'X') ? 'O' : 'X';
-            }
-        }
 
         // Exibindo as estatísticas após cada partida
         std::cout << "\n--- Fim de Jogo ---\n";

@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 #include "Reversi.hpp" // Inclua outros jogos conforme necessário
+#include "JogoDaVelha.hpp"
+#include "Lig4.hpp"
 
 class IniciarPartida {
 public:
