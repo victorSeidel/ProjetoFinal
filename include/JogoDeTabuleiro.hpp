@@ -18,7 +18,7 @@ class JogoDeTabuleiro
         virtual ~JogoDeTabuleiro() = default;
     
         // Métodos puramente virtuais (obrigatórios para classes derivadas):
-        virtual void Jogar() = 0;
+        virtual int Jogar() = 0;
         virtual void ImprimirTabuleiro() const = 0;
         virtual bool JogadaValida(int linha, int coluna) const = 0;
         virtual void RealizarJogada(int linha, int coluna, char jogador) = 0;

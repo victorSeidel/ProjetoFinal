@@ -30,12 +30,12 @@ void ExecutarPartida::IniciarJogo(jogador& jogador1, jogador& jogador2)
         {
             case 1:
                 jogo = new Reversi();  // Cria uma instância de Reversi
-                jogo->ExecutarPartida(); // Método que inicia a partida
+                jogo->Jogar(); // Método que inicia a partida
                 break;
 
             case 2:
                 jogo = new Lig4();  // Cria uma instância de Lig4
-                int j = jogo->ExecutarPartida(); // Método que inicia a partida
+                int j = jogo->Jogar(); // Método que inicia a partida
 
                 if (j == 1) 
                 {

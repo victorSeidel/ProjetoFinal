@@ -91,6 +91,11 @@ bool Lig4::VerificarDirecao(int linha, int coluna, int dLinha, int dColuna, char
     return count == 4;
 }
 
+int Lig4::Jogar()
+{
+    return ExecutarPartida();
+}
+
 int Lig4::ExecutarPartida() 
 {
     char jogadorAtual = 'X';
