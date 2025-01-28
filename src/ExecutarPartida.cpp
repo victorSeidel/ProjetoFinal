@@ -3,17 +3,16 @@
 #include "Reversi.hpp"
 #include "Lig4.hpp"
 
-void ExecutarPartida::IniciarJogo() 
+void ExecutarPartida::IniciarJogo(jogador& jogador1, jogador& jogador2) 
 {
     int escolha;
-    int vitoriasJogador1 = 0, vitoriasJogador2 = 0;
-    bool jogarNovamente = true;
-    std::string nomeJogador1, nomeJogador2;
 
-    std::cout << "Digite o nome do Jogador 1 (X): ";
-    std::cin >> nomeJogador1;
-    std::cout << "Digite o nome do Jogador 2 (O): ";
-    std::cin >> nomeJogador2;
+    int vitoriasJogador1 = 0, vitoriasJogador2 = 0;
+
+    bool jogarNovamente = true;
+
+    std::cout << "O jogador " << jogador1.get_apld << "será o X \n";
+    std::cout << "O jogador " << jogador2.get_apld << "será a O \n";
 
     while (jogarNovamente) 
     {
@@ -52,8 +51,8 @@ void ExecutarPartida::IniciarJogo()
         std::cout << "\n ----- Fim de Jogo ----- \n";
 
         // Exibindo as estatísticas após cada partida
-        std::cout << "Vitorias de " << nomeJogador1 << " (X): " << vitoriasJogador1 << std::endl;
-        std::cout << "Vitorias de " << nomeJogador2 << " (O): " << vitoriasJogador2 << std::endl;
+        std::cout << "Vitorias de " << jogador1.get_apld << " (X): " << vitoriasJogador1 << std::endl;
+        std::cout << "Vitorias de " << jogador2.get_apld << " (O): " << vitoriasJogador2 << std::endl;
 
         // Pergunta se o usuário deseja jogar novamente ou mudar de jogo
         char resposta;
