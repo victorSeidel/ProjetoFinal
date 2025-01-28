@@ -21,6 +21,7 @@ public:
     virtual ~Reversi() override = default;
 
     // Métodos sobrescritos
+    virtual void Jogar() override;
     virtual void ImprimirTabuleiro() const override;
     virtual bool JogadaValida(int linha, int coluna) const override;
     virtual void RealizarJogada(int linha, int coluna, char jogador) override;
