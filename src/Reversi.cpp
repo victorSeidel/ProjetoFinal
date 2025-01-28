@@ -3,6 +3,10 @@
 #include <algorithm>
 #include <cctype>
 
+void Reversi::Jogar() {
+    ExecutarPartida(); // Chama o loop principal do jogo
+}
+
 // Construtor
 Reversi::Reversi() : JogoDeTabuleiro(8, 8), jogadorAtual('X'), jogoFinalizado(false) {
     Reiniciar();
