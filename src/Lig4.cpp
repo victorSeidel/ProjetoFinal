@@ -1,4 +1,6 @@
-#include "../include/Lig4.hpp"
+#include <iostream>
+
+#include "Lig4.hpp"
 
 Lig4::Lig4() : JogoDeTabuleiro(6, 7) {}
 
