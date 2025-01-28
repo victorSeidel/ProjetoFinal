@@ -1,4 +1,6 @@
 #include "ExecutarPartida.hpp"
+#include "Cadastro.hpp"
+
 #include "<iostream>"
 
 int main() 
@@ -7,7 +9,7 @@ int main()
     std::cout << "Escolha o que deseja fazer: \n";
     std::cout << "1. Jogar \n";
     std::cout << "2. Cadastrar Jogador \n";
-    std::cout << "2. Listar Jogadores \n";
+    std::cout << "3. Listar Jogadores \n";
 
     int opcao;
     std::cin >> opcao;
@@ -28,16 +30,23 @@ int main()
 
             break;
         case 2:
-            std::cout << "Cadastrar Jogador \n";
+            std::cout << "----- Cadastrar Novo Jogador ----- \n";
+
+            cadastro cad;
+            cad.cadastrar_jogador();
+            
             break;
         case 3:
-            std::cout << "Listar Jogadores \n";
+            std::cout << "----- Lista de Jogadores ----- \n";
+
+            cadastro cad;
+            cad.listar_jgdrs();
+
             break;
         default:
-            std::cout << "Opção inválida! \n";
+            std::cout << "Erro: Opção inválida! \n";
             break;
     }
-
 
     return 0;
 }
