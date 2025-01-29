@@ -2,6 +2,7 @@
 #include "JogoDaVelha.hpp"
 #include "Reversi.hpp"
 #include "Lig4.hpp"
+#include "Cadastro.hpp"
 
 void ExecutarPartida::IniciarJogo(const std::string& ap1, const std::string& ap2) 
 {
@@ -15,6 +16,8 @@ void ExecutarPartida::IniciarJogo(const std::string& ap1, const std::string& ap2
     std::cout << "O jogador 2 será a O \n";
 
     int j;
+
+    CadastroDeJogadores cadastro;
 
     while (jogarNovamente) 
     {
@@ -38,11 +41,13 @@ void ExecutarPartida::IniciarJogo(const std::string& ap1, const std::string& ap2
 
                 if (j == 1) 
                 {
-                    
+                    cadastro.adicionarVitoria(ap1)
+                    cadastro.adicionarDerrota(ap2);
                 }
                 else if (j == 2)
                 {
-                    
+                    cadastro.adicionarVitoria(ap2)
+                    cadastro.adicionarDerrota(ap1);
                 }
 
                 break;
@@ -53,11 +58,13 @@ void ExecutarPartida::IniciarJogo(const std::string& ap1, const std::string& ap2
 
                 if (j == 1) 
                 {
-                    
+                    cadastro.adicionarVitoria(ap1)
+                    cadastro.adicionarDerrota(ap2);
                 }
                 else if (j == 2)
                 {
-                    
+                    cadastro.adicionarVitoria(ap2)
+                    cadastro.adicionarDerrota(ap1);
                 }
 
                 break;  
@@ -68,11 +75,13 @@ void ExecutarPartida::IniciarJogo(const std::string& ap1, const std::string& ap2
 
                 if (j == 1) 
                 {
-                    
+                    cadastro.adicionarVitoria(ap1)
+                    cadastro.adicionarDerrota(ap2);
                 }
                 else if (j == 2)
                 {
-                    
+                    cadastro.adicionarVitoria(ap2)
+                    cadastro.adicionarDerrota(ap1);
                 }
 
                 break;
