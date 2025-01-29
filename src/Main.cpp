@@ -11,7 +11,7 @@ void Mostrar()
 
 int main() 
 {
-    std::cout << "Olá, seja muito bem-vindo(a)! \n";
+    std::cout << "Ola, seja muito bem-vindo(a)! \n";
     Mostrar();
     int opcao=0;
         std::cin >> opcao;

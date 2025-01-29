@@ -11,8 +11,8 @@ void ExecutarPartida::IniciarJogo()
 
     bool jogarNovamente = true;
 
-    std::cout << "O jogador 1 será o X \n";
-    std::cout << "O jogador 2 será a O \n";
+    std::cout << "O jogador 1 sera o X \n";
+    std::cout << "O jogador 2 sera a O \n";
 
     int j;
 
@@ -51,7 +51,7 @@ void ExecutarPartida::IniciarJogo()
                 break;
    
             default:
-                std::cout << "Erro: Opção inválida! Escolha um número de 1 a 3 \n";
+                std::cout << "Erro: Opção invalida! Escolha um número de 1 a 3 \n";
                 return;
         }
 
@@ -81,7 +81,7 @@ void ExecutarPartida::IniciarJogo()
             }
             else 
             {
-                std::cout << "Erro: Opção inválida! Digite S (sim) ou N (não)." << std::endl;
+                std::cout << "Erro: Opcao invalida! Digite S (sim) ou N (não)." << std::endl;
                 return;
             }
         }

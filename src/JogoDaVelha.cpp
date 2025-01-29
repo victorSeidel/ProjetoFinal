@@ -55,13 +55,13 @@ bool JogoDaVelha::JogadaValida(int linha, int coluna) const {
 }
     int JogoDaVelha::ExecutarPartida()
 {
-        std::cout << "O jogador 1 será representado por um X e o jogador 2 por uma O." << std::endl;
+        std::cout << "O jogador 1 sera representado por um X e o jogador 2 por uma O." << std::endl;
         int num_jogadas = 0;
         while(num_jogadas < 9){
             this->ImprimirTabuleiro();
             int lin,col;
             if(num_jogadas%2 != 0){
-                std::cout << "É a vez do jogador 1" << std::endl;
+                std::cout << "E a vez do jogador 1" << std::endl;
                 std::cout << "Digite a linha e a coluna que deseja jogar: (Ex: 2 3) " << std::endl;
                 while(1){
                     std::cin >> lin >> col;
@@ -70,7 +70,7 @@ bool JogoDaVelha::JogadaValida(int linha, int coluna) const {
                         num_jogadas++;
                         break;
                     }else{
-                        std::cout << "Erro: Jogada inválida. Tente novamente." << std::endl;
+                        std::cout << "Erro: Jogada invalida. Tente novamente." << std::endl;
                         continue;
                     }       
                 }
@@ -82,7 +82,7 @@ bool JogoDaVelha::JogadaValida(int linha, int coluna) const {
                     continue;
                 }
             }else{
-                std::cout << "É a vez de jogador 2" << std::endl;
+                std::cout << "E a vez de jogador 2" << std::endl;
                   std::cout << "Digite a linha e a coluna que deseja jogar: (Ex: 2 3) " << std::endl;
                 while(1){
                     std::cin >> lin >> col;
@@ -91,7 +91,7 @@ bool JogoDaVelha::JogadaValida(int linha, int coluna) const {
                         num_jogadas++;
                         break;
                     }else{
-                        std::cout << "Erro: Jogada inválida. Tente novamente." << std::endl;
+                        std::cout << "Erro: Jogada invalida. Tente novamente." << std::endl;
                         continue;
                     }       
                 }

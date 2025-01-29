@@ -30,7 +30,7 @@ void Lig4::RealizarJogada(int linha, int coluna, char jogador)
 {
     if (!JogadaValida(linha, coluna)) 
     {
-        throw std::invalid_argument("Jogada inválida!");
+        throw std::invalid_argument("Jogada invalida!");
     }
 
     // Encontra a posição mais baixa disponível na coluna
@@ -117,7 +117,7 @@ int Lig4::ExecutarPartida()
 
         if (coluna < 1 || coluna > 7) 
         {
-            std::cout << "Erro: Jogada inválida! Escolha uma coluna de 1 a 7." << std::endl;
+            std::cout << "Erro: Jogada invalida! Escolha uma coluna de 1 a 7." << std::endl;
             continue;
         }
 
