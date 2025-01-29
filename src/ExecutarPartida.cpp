@@ -2,7 +2,7 @@
 #include "JogoDaVelha.hpp"
 #include "Reversi.hpp"
 #include "Lig4.hpp"
-#include "Cadastro.hpp"
+#include "CadastroDeJogadores.hpp"
 
 void ExecutarPartida::IniciarJogo(const std::string& ap1, const std::string& ap2) 
 {
