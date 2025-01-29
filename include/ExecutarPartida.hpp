@@ -10,7 +10,7 @@
 class ExecutarPartida 
 {
     public:
-        void IniciarJogo(const std::string& ap1, const std::string& ap2);
+        void IniciarJogo();
 };
 
 #endif // EXECUTAR_PARTIDA_HPP
