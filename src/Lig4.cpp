@@ -113,12 +113,7 @@ int Lig4::ExecutarPartida()
 
         std::cout << std::endl << "Jogador " << jogadorAtual << ", escolha uma coluna (1 a 7): ";
 
-        while (!(std::cin >> coluna)) 
-        {
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Erro: Entrada inválida! Escolha um número entre 1 e 7: ";
-        }
+        std::cin >> coluna
 
         if (coluna < 1 || coluna > 7) 
         {
