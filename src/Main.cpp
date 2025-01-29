@@ -1,6 +1,4 @@
 #include "ExecutarPartida.hpp"
-#include "Cadastro.hpp"
-#include "Jogador.hpp"
 
 #include <iostream>
 
@@ -40,22 +38,18 @@ int main()
                 std::cin >> ap2;
     
                 ExecutarPartida jogo; 
-                jogo.IniciarJogo(jogador1, jogador2);
+                jogo.IniciarJogo();
     
                 break;
             
             case 2:
                 std::cout << "----- Cadastrar Novo Jogador ----- \n";
     
-                cadastro.cadastrar_jogador();
-                cadastro.export_jgdrs();
                 
                 break;
             
             case 3:
                 std::cout << "----- Lista de Jogadores ----- \n";
-    
-                cadastro.listar_jgdrs();
     
                 break;
 
