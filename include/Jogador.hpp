@@ -18,6 +18,10 @@ class jogador{
     string apelido;/** apelido único do jogador */
     public:
     /**
+     * @brief construtor vazio de jogadores
+     */
+    jogador();
+    /**
      * @brief construtor para jogadores ainda não cadastrados
      * @param nm nome do jogador a ser cadastrado
      * @param apld apelido do jogador a ser cadastrado
