@@ -5,13 +5,13 @@
 class JogoDaVelha: public JogoDeTabuleiro{
     public:
     JogoDaVelha();
-    ~JogoDaVelha() = default;
-    bool JogadaValida(int linha, int coluna);
-    void Reiniciar();
-    bool VerificarVitoria(char)const;
-    void RealizarJogada(int, int , char);
-    int ExecutarPartida();
-    int Jogar();
-    void ImprimirTabuleiro();
+    ~JogoDaVelha();
+    bool JogadaValida(int linha, int coluna) override;
+    void Reiniciar() override;
+    bool VerificarVitoria(char)const override;
+    void RealizarJogada(int, int , char) override;
+    int ExecutarPartida() override;
+    int Jogar() override;
+    void ImprimirTabuleiro() override;
 };
 #endif
