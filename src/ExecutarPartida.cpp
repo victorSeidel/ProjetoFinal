@@ -3,7 +3,7 @@
 #include "Reversi.hpp"
 #include "Lig4.hpp"
 
-void ExecutarPartida::IniciarJogo() 
+void ExecutarPartida::IniciarJogo(const std::string& ap1, const std::string& ap2) 
 {
     int escolha;
 
