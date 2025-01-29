@@ -11,6 +11,8 @@ Para fazer o que foi pedido, foram implementadas, além da classe abstrata e as 
 "cadastro": tem como atributo um mapa que representa a coleção de todos os cadastros de jogadores individuais, usando os seus apelidos como chave. A motivação do uso desse container foi o fato de que cada um de seus elementos terem uma chave única, assim como cada um dos jogadores tem um apelido único, o que facilita a procura por cada um dos jogadores. Possui métodos para adicionar e remover jogadores, listar os jogadores cadastrados, exportar os cadastros para um arquivo e importar os cadastros de tal arquivo.
 
 "ExecutarPartida": contém simplesmente um método para iniciar algum jogo dado.
+
+As entradas tomadas por nosso programa diferem dos exemplos dados no enunciado do trabalho. Baseada na ideia de implementação do grupo, consideramos que as entradas tomadas são mais intuitivas e correspondem melhor à estrutura do código. Além disso, os dados esperados do usuário são informados explicitamente durante a execução do código, portanto a mudança não acarreta em problemas.                   
 # Partidas
 Cada partida ocorre entre dois jogadores, aos quais são assinalados um símbolo "X" ou "O", que representam as suas jogadas. É, então, requisitado que o primeiro jogador faça sua jogada, informando as coordenadas da sua jogada. É testado se essa jogada é válida, e então, se for, ela é realizada e o tabuleiro é imprimido. Isso ocorre até que um jogador ganhe ou ocorra um empate, dependendo da lógica de cada jogo.
 # Dificuldades
