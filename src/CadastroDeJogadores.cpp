@@ -1,4 +1,4 @@
-#include "CadastroDeJogadores.h"
+#include "CadastroDeJogadores.hpp"
 
 CadastroDeJogadores::CadastroDeJogadores() {
     carregarDoArquivo();
