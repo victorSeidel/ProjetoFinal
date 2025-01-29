@@ -91,8 +91,8 @@ void ExecutarPartida::IniciarJogo(jogador jogador1, jogador jogador2)
         std::cout << "\n ----- Fim de Jogo ----- \n";
 
         // Exibindo as estatísticas após cada partida
-        std::cout << "Vitorias de " << jogador1.get_apld << " (X): " << vitoriasJogador1 << std::endl;
-        std::cout << "Vitorias de " << jogador2.get_apld << " (O): " << vitoriasJogador2 << std::endl;
+        std::cout << "Vitorias do jogador 1 (X): " << vitoriasJogador1 << std::endl;
+        std::cout << "Vitorias do jogador 2 (O): " << vitoriasJogador2 << std::endl;
 
         // Pergunta se o usuário deseja jogar novamente ou mudar de jogo
         char resposta;
