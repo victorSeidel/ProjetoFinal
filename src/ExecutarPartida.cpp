@@ -11,8 +11,8 @@ void ExecutarPartida::IniciarJogo(jogador jogador1, jogador jogador2)
 
     bool jogarNovamente = true;
 
-    std::cout << "O jogador " << jogador1.get_apld << "será o X \n";
-    std::cout << "O jogador " << jogador2.get_apld << "será a O \n";
+    std::cout << "O jogador 1 será o X \n";
+    std::cout << "O jogador 2 será a O \n";
 
     while (jogarNovamente) 
     {
