@@ -1,5 +1,5 @@
-#ifndef CADASTRO_DE_JOGADORES_H
-#define CADASTRO_DE_JOGADORES_H
+#ifndef CADASTRO_DE_JOGADORES_HPP
+#define CADASTRO_DE_JOGADORES_HPP
 
 #include "Jogador.h"
 #include <vector>
@@ -22,6 +22,8 @@ public:
     void cadastrarJogador(const std::string& nome, const std::string& apelido);
     void removerJogador(const std::string& apelido);
     void listarJogadores() const;
+    void adicionarVitoria(const std::string& apelido);
+    void adicionarDerrota(const std::string& apelido);
 };
 
 #endif // CADASTRO_DE_JOGADORES_H
