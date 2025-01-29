@@ -24,6 +24,9 @@ JogoDaVelha::JogoDaVelha():JogoDeTabuleiro::JogoDeTabuleiro(3,3){}
             return false;
         }
     }
+
+    //JogoDaVelha::~JogoDaVelha() = default;
+
     void JogoDaVelha::ImprimirTabuleiro() const {
     for (const auto& linha : tabuleiro) 
     {

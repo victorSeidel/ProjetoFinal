@@ -6,7 +6,7 @@
 class JogoDaVelha: public JogoDeTabuleiro{
     public:
     JogoDaVelha();
-    virtual ~JogoDaVelha();
+    virtual ~JogoDaVelha() = default;
     bool JogadaValida(int linha, int coluna) const override;
     void Reiniciar() override;
     bool VerificarVitoria(char) const override;
