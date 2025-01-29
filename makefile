@@ -1,40 +1,49 @@
 # Compilador
-CC = g++
+CXX = g++
 
-# Flags de compilação
-CFLAGS = -Wall -Wextra -std=c++11 -Iinclude
-
-# Nome do executável
-TARGET = PROJECTOFINAL
+# Flags do compilador
+CXXFLAGS = -Wall -Wextra -std=c++17 -Iinclude
 
 # Diretórios
-SRC_DIR = output
-BUILD_DIR = build
+SRC_DIR = src
+OBJ_DIR = obj
+BIN_DIR = bin
 
-# Lista de arquivos fonte (.cpp)
-SOURCES = $(wildcard $(SRC_DIR)/*.cpp)
-OBJECTS = $(patsubst $(SRC_DIR)/%.cpp,$(BUILD_DIR)/%.o,$(SOURCES))
+# Lista de arquivos-fonte
+SRC_FILES = $(wildcard $(SRC_DIR)/*.cpp)
 
-# Cabeçalhos
-HEADERS = $(wildcard include/*.hpp)
+# Lista de arquivos objeto
+OBJ_FILES = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC_FILES))
 
-# Regra padrão
-all: $(BUILD_DIR) $(TARGET)
+# Nome do executável
+TARGET = $(BIN_DIR)/ProjetoFinal
 
-# Cria diretório de build
-$(BUILD_DIR):
-	mkdir -p $(BUILD_DIR)
+# Regra principal
+all: $(TARGET)
 
-# Regra para o executável
-$(TARGET).exe: $(OBJECTS)
-	$(CC) $(CFLAGS) $^ -o $@
+# Compilação do executável
+$(TARGET): $(OBJ_FILES) | $(BIN_DIR)
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
-# Regra para arquivos objeto
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp $(HEADERS)
-	$(CC) $(CFLAGS) -c $< -o $@
+# Compilação dos arquivos objeto
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Limpeza
+# Criar diretórios se não existirem
+$(BIN_DIR) $(OBJ_DIR):
+	mkdir -p $@
+
+# Limpeza dos arquivos compilados
 clean:
-	rm -rf $(BUILD_DIR) $(TARGET)
+	rm -rf $(OBJ_DIR) $(BIN_DIR)
 
-.PHONY: all clean
+# Remover apenas os objetos
+clean-obj:
+	rm -rf $(OBJ_DIR)
+
+# Recompilação total
+rebuild: clean all
+
+# Executar o programa
+run: all
+	./$(TARGET)
