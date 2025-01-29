@@ -74,3 +74,33 @@ void CadastroDeJogadores::listarJogadores() const {
                   << ", Derrotas: " << jogador.derrotas << std::endl;
     }
 }
+
+void CadastroDeJogadores::adicionarVitoria(const std::string& apelido) {
+    auto it = std::find_if(jogadores.begin(), jogadores.end(), [&](const Jogador& j) {
+        return j.apelido == apelido;
+    });
+
+    if (it == jogadores.end()) {
+        std::cerr << "Erro: Jogador não encontrado!" << std::endl;
+        return;
+    }
+
+    it->vitorias++;
+    std::cout << "Vitória adicionada para " << it->nome << "!" << std::endl;
+    salvarEmArquivo();
+}
+
+void CadastroDeJogadores::adicionarDerrota(const std::string& apelido) {
+    auto it = std::find_if(jogadores.begin(), jogadores.end(), [&](const Jogador& j) {
+        return j.apelido == apelido;
+    });
+
+    if (it == jogadores.end()) {
+        std::cerr << "Erro: Jogador não encontrado!" << std::endl;
+        return;
+    }
+
+    it->derrotas++;
+    std::cout << "Derrota adicionada para " << it->nome << "!" << std::endl;
+    salvarEmArquivo();
+}
