@@ -1,5 +1,6 @@
 #include "ExecutarPartida.hpp"
 #include "Cadastro.hpp"
+#include "Jogador.hpp"
 
 #include <iostream>
 
@@ -17,6 +18,7 @@ int main()
     cadastro cadastro;
 
     string ap1, ap2;
+    jogador jogador1, jogador2;
 
     switch(opcao)
     {
@@ -28,7 +30,7 @@ int main()
             std::cin >> ap2;
 
             ExecutarPartida jogo; 
-            jogo.IniciarJogo();
+            jogo.IniciarJogo(jogador1, jogador2);
 
             break;
         case 2:
