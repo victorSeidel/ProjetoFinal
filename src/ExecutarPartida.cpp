@@ -38,13 +38,11 @@ void ExecutarPartida::IniciarJogo(jogador jogador1, jogador jogador2)
 
                 if (j == 1) 
                 {
-                    jogador1.add_vit("reversi");
-                    jogador2.add_derrt("reversi");
+                    
                 }
                 else if (j == 2)
                 {
-                    jogador2.add_vit("reversi");
-                    jogador1.add_derrt("reversi");
+                    
                 }
 
                 break;
@@ -55,13 +53,11 @@ void ExecutarPartida::IniciarJogo(jogador jogador1, jogador jogador2)
 
                 if (j == 1) 
                 {
-                    jogador1.add_vit("lig");
-                    jogador2.add_derrt("lig");
+                    
                 }
                 else if (j == 2)
                 {
-                    jogador2.add_vit("lig");
-                    jogador1.add_derrt("lig");
+                    
                 }
 
                 break;  
@@ -72,13 +68,11 @@ void ExecutarPartida::IniciarJogo(jogador jogador1, jogador jogador2)
 
                 if (j == 1) 
                 {
-                    jogador1.add_vit("velha");
-                    jogador2.add_derrt("velha");
+                    
                 }
                 else if (j == 2)
                 {
-                    jogador2.add_vit("velha");
-                    jogador1.add_derrt("velha");
+                    
                 }
 
                 break;
