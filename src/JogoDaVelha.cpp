@@ -1,7 +1,7 @@
 /**
  * 
  */
-#include "jogodavelha.hpp"
+#include "JogoDaVelha.hpp"
 JogoDaVelha::JogoDaVelha():JogoDeTabuleiro::JogoDeTabuleiro(3,3){}
     bool JogoDaVelha::VerificarVitoria(char j1)const{
         if(this->tabuleiro[0][0] == j1 && this->tabuleiro[0][1] == j1 && this->tabuleiro[0][2] == j1){
