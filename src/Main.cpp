@@ -1,9 +1,11 @@
 #include "ExecutarPartida.hpp"
-#include "Cadastro.hpp"
+#include "CadastroDeJogadores.hpp"
 #include "Jogador.hpp"
 
 #include <iostream>
-
+/**
+* @brief Mostra a lista de possíveis opções do sistema.
+*/
 void Mostrar()
 {
     std::cout << "Escolha o que deseja fazer: \n";
@@ -18,7 +20,7 @@ int main()
 {
     std::cout << "Olá, seja muito bem-vindo(a)! \n";
 
-    CadastroDeJogadores cadastro;
+    CadastroDeJogadores cadastro; /** cadastro para salvar os jogadores */
     
     do
     {
