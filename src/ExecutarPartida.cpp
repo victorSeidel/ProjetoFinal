@@ -2,9 +2,8 @@
 #include "JogoDaVelha.hpp"
 #include "Reversi.hpp"
 #include "Lig4.hpp"
-#include "CadastroDeJogadores.hpp"
 
-void ExecutarPartida::IniciarJogo(const std::string& ap1, const std::string& ap2) 
+void ExecutarPartida::IniciarJogo() 
 {
     int escolha;
 
@@ -39,50 +38,17 @@ void ExecutarPartida::IniciarJogo(const std::string& ap1, const std::string& ap2
                 jogo = new Reversi();  // Cria uma instância de Reversi
                 j = jogo->Jogar(); // Método que inicia a partida
 
-                if (j == 1) 
-                {
-                    cadastro.adicionarVitoria(ap1)
-                    cadastro.adicionarDerrota(ap2);
-                }
-                else if (j == 2)
-                {
-                    cadastro.adicionarVitoria(ap2)
-                    cadastro.adicionarDerrota(ap1);
-                }
-
                 break;
 
             case 2:
                 jogo = new Lig4();  // Cria uma instância de Lig4
                 j = jogo->Jogar(); // Método que inicia a partida
 
-                if (j == 1) 
-                {
-                    cadastro.adicionarVitoria(ap1)
-                    cadastro.adicionarDerrota(ap2);
-                }
-                else if (j == 2)
-                {
-                    cadastro.adicionarVitoria(ap2)
-                    cadastro.adicionarDerrota(ap1);
-                }
-
                 break;  
 
             case 3:
                 jogo = new JogoDaVelha();  // Cria uma instância de Jogo da Velha
                 j = jogo->Jogar(); // Método que inicia a partida
-
-                if (j == 1) 
-                {
-                    cadastro.adicionarVitoria(ap1)
-                    cadastro.adicionarDerrota(ap2);
-                }
-                else if (j == 2)
-                {
-                    cadastro.adicionarVitoria(ap2)
-                    cadastro.adicionarDerrota(ap1);
-                }
 
                 break;
    
