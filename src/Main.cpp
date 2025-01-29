@@ -10,22 +10,22 @@ void Mostrar()
     std::cout << "1. Jogar \n";
     std::cout << "2. Cadastrar Jogador \n";
     std::cout << "3. Listar Jogadores \n";
-    std::cout << "4. Encerrar Programa \n";
+    std::cout << "4. Remover Jogador \n";
+    std::cout << "5. Encerrar Programa \n";
 }
 
 int main() 
 {
     std::cout << "Olá, seja muito bem-vindo(a)! \n";
 
-    int l = 1;
-    while(l)
+    CadastroDeJogadores cadastro;
+    
+    do
     {
         Mostrar();
     
         int opcao;
         std::cin >> opcao;
-    
-        cadastro cadastro;
     
         string ap1, ap2;
         jogador jogador1, jogador2;
@@ -45,29 +45,38 @@ int main()
                 break;
             
             case 2:
+                std::string nome, apelido;
                 std::cout << "----- Cadastrar Novo Jogador ----- \n";
-    
-                cadastro.cadastrar_jogador();
-                cadastro.export_jgdrs();
+                std::cout << "Digite o nome do jogador: ";
+                std::getline(stcin, nome);
+                std::cout << "Digite o apelido do jogador: ";
+                std::getline(stcin, apelido);
+                cadastro.cadastrarJogador(nome, apelido);
                 
                 break;
             
             case 3:
                 std::cout << "----- Lista de Jogadores ----- \n";
-    
-                cadastro.listar_jgdrs();
+                cadastro.listarJogadores();
     
                 break;
 
             case 4:
-                l = 0;
+                std::string apelido;
+                std::cout << "Digite o apelido do jogador a ser removido: ";
+                std::getline(stcin, apelido);
+                cadastro.removerJogador(apelido);
+
+                break;
+
+            case 5:
                 break;
             
             default:
                 std::cout << "Erro: Opção inválida! \n";
                 break;
         }
-    }
+    } while (opcao != 5)
 
     return 0;
 }
