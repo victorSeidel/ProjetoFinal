@@ -43,7 +43,7 @@ int main()
                 std::cout << "Erro: Opção inválida! \n";
                 break;
         }
-    } while (opcao != 4)
+    } while (opcao != 4);
 
     return 0;
 }
