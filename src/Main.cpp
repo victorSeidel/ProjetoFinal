@@ -15,8 +15,7 @@ int main()
 {
     std::cout << "Olá, seja muito bem-vindo(a)! \n";
 
-    int l = 1;
-    while(l)
+    do
     {
         Mostrar();
     
@@ -33,24 +32,20 @@ int main()
             
             case 2:
                 std::cout << "----- Cadastrar Novo Jogador ----- \n";
-    
-                
                 break;
             
             case 3:
                 std::cout << "----- Lista de Jogadores ----- \n";
-    
                 break;
 
             case 4:
-                l = 0;
                 break;
             
             default:
                 std::cout << "Erro: Opção inválida! \n";
                 break;
         }
-    }
+    } while (opcao != 4)
 
     return 0;
 }
