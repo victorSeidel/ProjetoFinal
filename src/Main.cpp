@@ -34,13 +34,13 @@ int main()
         {
             case 1:
                 std::cout << "Digite o apelido do jogador 1: ";
-                std::cin >> ap1;
+                std::getline(stcin, ap1);
     
                 std::cout << "Digite o apelido do jogador 2: ";
-                std::cin >> ap2;
+                std::getline(stcin, ap2);
     
                 ExecutarPartida jogo; 
-                jogo.IniciarJogo(jogador1, jogador2);
+                jogo.IniciarJogo(ap1, ap2);
     
                 break;
             
