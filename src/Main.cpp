@@ -16,11 +16,11 @@ int main()
 
     cadastro cadastro;
 
+    string ap1, ap2;
+
     switch(opcao)
     {
-        case 1: {}
-            string ap1, ap2;
-
+        case 1:
             std::cout << "Digite o apelido do jogador 1: ";
             std::cin >> ap1;
 
