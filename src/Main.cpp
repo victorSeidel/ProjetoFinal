@@ -1,6 +1,4 @@
 #include "ExecutarPartida.hpp"
-#include "CadastroDeJogadores.hpp"
-#include "Jogador.hpp"
 
 #include <iostream>
 /**
@@ -53,13 +51,11 @@ int main()
                 std::getline(stcin, nome);
                 std::cout << "Digite o apelido do jogador: ";
                 std::getline(stcin, apelido);
-                cadastro.cadastrarJogador(nome, apelido);
                 
                 break;
             
             case 3:
                 std::cout << "----- Lista de Jogadores ----- \n";
-                cadastro.listarJogadores();
     
                 break;
 
@@ -67,7 +63,6 @@ int main()
                 std::string apelido;
                 std::cout << "Digite o apelido do jogador a ser removido: ";
                 std::getline(stcin, apelido);
-                cadastro.removerJogador(apelido);
 
                 break;
 
