@@ -105,5 +105,5 @@ bool JogoDaVelha::JogadaValida(int linha, int coluna){
     }
     int JogoDaVelha::Jogar()
     {
-        return this->ExecutarPartida(j1,j2);
+        return this->ExecutarPartida();
     }
