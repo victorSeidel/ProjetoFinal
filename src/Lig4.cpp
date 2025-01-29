@@ -113,7 +113,7 @@ int Lig4::ExecutarPartida()
 
         std::cout << std::endl << "Jogador " << jogadorAtual << ", escolha uma coluna (1 a 7): ";
 
-        std::cin >> coluna
+        std::cin >> coluna;
 
         if (coluna < 1 || coluna > 7) 
         {
