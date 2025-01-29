@@ -1,9 +1,7 @@
 #ifndef EXECUTAR_PARTIDA_HPP
 #define EXECUTAR_PARTIDA_HPP
 
-#include <iostream>
-#include <string>
-#include "Reversi.hpp" // Inclua outros jogos conforme necessário
+#include "Reversi.hpp" 
 #include "JogoDaVelha.hpp"
 #include "Lig4.hpp"
 #include "Jogador.hpp"
