@@ -17,7 +17,7 @@ int main()
     {
         Mostrar();
     
-        int opcao;
+        int opcao = 0;
         std::cin >> opcao;
     
         switch(opcao)
