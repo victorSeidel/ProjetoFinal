@@ -24,7 +24,7 @@ JogoDaVelha::JogoDaVelha():JogoDeTabuleiro::JogoDeTabuleiro(3,3){}
             return false;
         }
     }
-    void JogoDaVelha::ImprimirTabuleiro(){
+    void JogoDaVelha::ImprimirTabuleiro() const {
     for (const auto& linha : tabuleiro) 
     {
         for (char celula : linha)
@@ -35,7 +35,7 @@ JogoDaVelha::JogoDaVelha():JogoDeTabuleiro::JogoDeTabuleiro(3,3){}
         std::cout << "\n";
     }
 }
-bool JogoDaVelha::JogadaValida(int linha, int coluna){
+bool JogoDaVelha::JogadaValida(int linha, int coluna) const{
     return linha >= 0 && linha < linhas && coluna >= 0 && coluna < colunas && tabuleiro[linha][coluna] == '.';
 }
     void JogoDaVelha::RealizarJogada(int linha, int coluna, char jogador){
