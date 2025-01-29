@@ -4,7 +4,9 @@
 #include "Reversi.hpp" 
 #include "JogoDaVelha.hpp"
 #include "Lig4.hpp"
-
+/**
+* @brief Classe para efetivamente realizar a partida.
+*/
 class ExecutarPartida 
 {
     public:
