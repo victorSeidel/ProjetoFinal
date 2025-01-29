@@ -3,15 +3,25 @@
 #include <algorithm>
 #include <cctype>
 
+/**
+ * @brief Inicia o jogo de Reversi chamando o loop principal.
+ */
 int Reversi::Jogar() {
     return ExecutarPartida(); // Chama o loop principal do jogo
 }
 
 // Construtor
+/**
+ * @brief Construtor da classe Reversi.
+ * Inicializa o tabuleiro 8x8, define o jogador inicial como 'X' e reinicia o jogo.
+ */
 Reversi::Reversi() : JogoDeTabuleiro(8, 8), jogadorAtual('X'), jogoFinalizado(false) {
     Reiniciar();
 }
-    //Exibir instruções
+
+/**
+ * @brief Exibe as instruções do jogo, incluindo regras e comandos.
+ */
 void Reversi::ExibirInstrucoes() const {
     std::cout << "\n=== REVERSI ===\n";
     std::cout << "Instrucoes:\n";
@@ -25,7 +35,9 @@ void Reversi::ExibirInstrucoes() const {
     std::cout << "------------------------------------------------\n";
 }
 
-// Impressão do tabuleiro com coordenadas
+/**
+ * @brief Imprime o tabuleiro com coordenadas de coluna (A-H) e linha (1-8).
+ */
 void Reversi::ImprimirTabuleiro() const {
     std::cout << "\n  ";
     for (char c = 'A'; c < 'A' + colunas; ++c) {
@@ -42,7 +54,12 @@ void Reversi::ImprimirTabuleiro() const {
     }
 }
 
-// Validação de jogada com flanking
+/**
+ * @brief Verifica se uma jogada é válida conforme as regras do Reversi.
+ * @param linha Índice da linha (0 a 7).
+ * @param coluna Índice da coluna (0 a 7).
+ * @return true se a jogada é válida, false caso contrário.
+ */
 bool Reversi::JogadaValida(int linha, int coluna) const {
     if (linha < 0 || linha >= linhas || coluna < 0 || coluna >= colunas || tabuleiro[linha][coluna] != ' ') {
         return false;
@@ -74,7 +91,12 @@ bool Reversi::JogadaValida(int linha, int coluna) const {
     return false;
 }
 
-// Implementação completa da jogada
+/**
+ * @brief Executa uma jogada válida, invertendo as peças do oponente conforme as regras.
+ * @param linha Índice da linha (0 a 7).
+ * @param coluna Índice da coluna (0 a 7).
+ * @param jogador Jogador atual ('X' ou 'O').
+ */
 void Reversi::RealizarJogada(int linha, int coluna, char jogador) {
     if (jogador != jogadorAtual || !JogadaValida(linha, coluna)) return;
 
@@ -114,7 +136,9 @@ void Reversi::RealizarJogada(int linha, int coluna, char jogador) {
     jogadorAtual = proximoJogador;
 }
 
-// Reinicialização correta do tabuleiro
+/**
+ * @brief Reinicia o jogo, resetando o tabuleiro e variáveis de estado.
+ */
 void Reversi::Reiniciar() {
     for (auto& linha : tabuleiro) {
         std::fill(linha.begin(), linha.end(), ' ');
@@ -128,7 +152,11 @@ void Reversi::Reiniciar() {
     jogadorAtual = 'X';
 }
 
-// Verificação de vitória por contagem
+/**
+ * @brief Verifica se um jogador venceu com base na contagem de peças.
+ * @param jogador Jogador a ser verificado ('X' ou 'O').
+ * @return true se o jogador tem mais peças que o oponente, false caso contrário.
+ */
 bool Reversi::VerificarVitoria(char jogador) const {
     int countJogador = 0, countOponente = 0;
     char oponente = (jogador == 'X') ? 'O' : 'X';
@@ -142,7 +170,9 @@ bool Reversi::VerificarVitoria(char jogador) const {
     return countJogador > countOponente;
 }
 
-// Loop principal totalmente funcional
+/**
+ * @brief Loop principal do jogo, gerencia turnos, entradas e finalização.
+ */
 int Reversi::ExecutarPartida() {
     std::string entrada;
     bool instrucoesMostradas = false;
@@ -219,7 +249,11 @@ int Reversi::ExecutarPartida() {
             return 2;
         }
 }
-// Métodos auxiliares
+/**
+ * @brief Verifica se um jogador tem movimentos válidos disponíveis.
+ * @param jogador Jogador a ser verificado ('X' ou 'O').
+ * @return true se o jogador pode jogar, false caso contrário.
+ */
 bool Reversi::PodeJogar(char jogador) const {
     for (int l = 0; l < linhas; ++l) {
         for (int c = 0; c < colunas; ++c) {
@@ -252,6 +286,13 @@ bool Reversi::PodeJogar(char jogador) const {
     return false;
 }
 
+/**
+ * @brief Converte uma entrada do usuário (ex: "A1") em índices de linha e coluna.
+ * @param entrada String de entrada do usuário.
+ * @param linha Referência para armazenar o índice da linha (0 a 7).
+ * @param coluna Referência para armazenar o índice da coluna (0 a 7).
+ * @return true se a conversão foi bem-sucedida, false caso contrário.
+ */
 bool Reversi::ConverterEntrada(const std::string& entrada, int& linha, int& coluna) const {
     if (entrada.empty() || !isalpha(entrada[0])) return false;
 
@@ -270,4 +311,3 @@ bool Reversi::ConverterEntrada(const std::string& entrada, int& linha, int& colu
 
     return (linha >= 0 && linha < linhas && coluna >= 0 && coluna < colunas);
 }
-
