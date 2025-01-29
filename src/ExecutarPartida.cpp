@@ -14,6 +14,8 @@ void ExecutarPartida::IniciarJogo(jogador jogador1, jogador jogador2)
     std::cout << "O jogador 1 será o X \n";
     std::cout << "O jogador 2 será a O \n";
 
+    int j;
+
     while (jogarNovamente) 
     {
         std::cout << "Escolha um jogo para jogar: \n";
@@ -26,11 +28,13 @@ void ExecutarPartida::IniciarJogo(jogador jogador1, jogador jogador2)
 
         JogoDeTabuleiro* jogo;
 
+        j = 0;
+        
         switch (escolha) 
         {
             case 1:
                 jogo = new Reversi();  // Cria uma instância de Reversi
-                int j = jogo->Jogar(); // Método que inicia a partida
+                j = jogo->Jogar(); // Método que inicia a partida
 
                 if (j == 1) 
                 {
@@ -47,7 +51,7 @@ void ExecutarPartida::IniciarJogo(jogador jogador1, jogador jogador2)
 
             case 2:
                 jogo = new Lig4();  // Cria uma instância de Lig4
-                int j = jogo->Jogar(); // Método que inicia a partida
+                j = jogo->Jogar(); // Método que inicia a partida
 
                 if (j == 1) 
                 {
@@ -64,7 +68,7 @@ void ExecutarPartida::IniciarJogo(jogador jogador1, jogador jogador2)
 
             case 3:
                 jogo = new JogoDaVelha();  // Cria uma instância de Jogo da Velha
-                int j = jogo->Jogar(jogador1, jogador2); // Método que inicia a partida
+                j = jogo->Jogar(jogador1, jogador2); // Método que inicia a partida
 
                 if (j == 1) 
                 {
