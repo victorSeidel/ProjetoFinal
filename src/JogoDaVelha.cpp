@@ -47,15 +47,16 @@ bool JogoDaVelha::JogadaValida(int linha, int coluna){
         std::fill(linha.begin(), linha.end(), '.');
     }
 }
-    int JogoDaVelha::ExecutarPartida(jogador& j1, jogador& j2){
-        std::cout << "As jogadas de " << j1.get_apld() << " serão representadas por um X, enquanto as jogadas de " << j2.get_apld() << " serão representadas por um O." << std::endl;
+    int JogoDaVelha::ExecutarPartida()
+{
+        std::cout << "O jogador 1 será representado por um X e o jogador 2 por uma O." << std::endl;
         int num_jogadas = 0;
         while(num_jogadas < 9){
             this->ImprimirTabuleiro();
             num_jogadas++;
             int lin,col;
             if(num_jogadas%2 != 0){
-                std::cout << "É a vez de " << j1.get_apld() << std::endl;
+                std::cout << "É a vez do jogador 1" << std::endl;
                 std::cout << "Digite, nessa ordem, o número da linha e da coluna em que deseja realizar sua jogada." << std::endl << "(esperando jogada)" << std::endl;
                 while(1){
                     std::cin >> lin >> col;
@@ -68,15 +69,14 @@ bool JogoDaVelha::JogadaValida(int linha, int coluna){
                     }       
                 }
                 if(this->VerificarVitoria('X')){
-                    std::cout << j1.get_apld() << "ganhou !" << std::endl;
-                    j1.add_vit("velha");
+                    std::cout << "Jogador 1 ganhou!" << std::endl;
                     num_jogadas = 0;
                     return 1;
                 }else{
                     continue;
                 }
             }else{
-                std::cout << "É a vez de " << j2.get_apld() << std::endl;
+                std::cout << "É a vez de jogador 2" << std::endl;
                 std::cout << "Digite, nessa ordem, o número da linha e da coluna em que deseja realizar sua jogada." << std::endl << "(esperando jogada)" << std::endl;
                 while(1){
                     std::cin >> lin >> col;
@@ -89,8 +89,7 @@ bool JogoDaVelha::JogadaValida(int linha, int coluna){
                     }       
                 }
                 if(this->VerificarVitoria('O')){
-                    std::cout << j2.get_apld() << "ganhou !" << std::endl;
-                    j2.add_vit("velha");
+                    std::cout << " Jogador 2 ganhou!" << std::endl;
                     num_jogadas = 0;
                     return 2;
                 }else{
