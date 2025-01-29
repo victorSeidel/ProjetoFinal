@@ -3,7 +3,7 @@
 #include "Reversi.hpp"
 #include "Lig4.hpp"
 
-void ExecutarPartida::IniciarJogo(jogador& jogador1, jogador& jogador2) 
+void ExecutarPartida::IniciarJogo(jogador jogador1, jogador jogador2) 
 {
     int escolha;
 
