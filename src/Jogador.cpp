@@ -1,4 +1,7 @@
 #include "Jogador.hpp"
+
+jogador::jogador(){}
+
 jogador::jogador(string nm,string apld){ //para criar um jogador completamente novo
         this->nome = nm;
         this->apelido = apld;
