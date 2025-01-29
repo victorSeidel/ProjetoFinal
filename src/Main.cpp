@@ -6,8 +6,6 @@ void Mostrar()
 {
     std::cout << "Escolha o que deseja fazer: \n";
     std::cout << "1. Jogar \n";
-    std::cout << "2. Cadastrar Jogador \n";
-    std::cout << "3. Listar Jogadores \n";
     std::cout << "4. Encerrar Programa \n";
 }
 
