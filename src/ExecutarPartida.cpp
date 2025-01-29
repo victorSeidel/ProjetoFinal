@@ -68,7 +68,7 @@ void ExecutarPartida::IniciarJogo(jogador jogador1, jogador jogador2)
 
             case 3:
                 jogo = new JogoDaVelha();  // Cria uma instância de Jogo da Velha
-                j = jogo->Jogar(jogador1, jogador2); // Método que inicia a partida
+                j = jogo->Jogar(); // Método que inicia a partida
 
                 if (j == 1) 
                 {
