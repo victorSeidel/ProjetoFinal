@@ -39,10 +39,10 @@ JogoDaVelha::JogoDaVelha():JogoDeTabuleiro::JogoDeTabuleiro(3,3){}
     }
 }
 bool JogoDaVelha::JogadaValida(int linha, int coluna) const{
-    return linha >= 0 && linha < linhas && coluna >= 0 && coluna < colunas && tabuleiro[linha][coluna] == '.';
+    return linha > 0 && linha < linhas && coluna > 0 && coluna < colunas && tabuleiro[linha][coluna] == '.';
 }
     void JogoDaVelha::RealizarJogada(int linha, int coluna, char jogador){
-        this->tabuleiro[linha - 1][coluna - 1] = jogador;
+        this->tabuleiro[linha][coluna] = jogador;
     }
     void JogoDaVelha::Reiniciar(){
     for (auto& linha : tabuleiro) 
