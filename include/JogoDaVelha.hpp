@@ -10,8 +10,8 @@ class JogoDaVelha: public JogoDeTabuleiro{
     void Reiniciar();
     bool VerificarVitoria(char)const;
     void RealizarJogada(int, int , char);
-    void ExecutarPartida(jogador&, jogador& );
-    void Jogar(jogador&, jogador&);
+    int ExecutarPartida(jogador&, jogador& );
+    int Jogar(jogador&, jogador&);
     void ImprimirTabuleiro();
 };
 #endif
