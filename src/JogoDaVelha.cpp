@@ -60,14 +60,14 @@ bool JogoDaVelha::JogadaValida(int linha, int coluna) const{
             int lin,col;
             if(num_jogadas%2 != 0){
                 std::cout << "É a vez do jogador 1" << std::endl;
-                std::cout << "Digite, nessa ordem, o número da linha e da coluna em que deseja realizar sua jogada." << std::endl << "(esperando jogada)" << std::endl;
+                std::cout << "Digite a linha e a coluna que deseja jogar: (Ex: 2 3) " << std::endl;
                 while(1){
                     std::cin >> lin >> col;
                     if(this->JogadaValida(lin - 1,col - 1)){
                         this->RealizarJogada(lin - 1,col - 1,'X');
                         break;
                     }else{
-                        std::cout << "Jogada inválida, tente novamente." << std::endl << "(esperando jogada)" << std::endl;
+                        std::cout << "Erro: Jogada inválida. Tente novamente." << std::endl;
                         continue;
                     }       
                 }
@@ -80,14 +80,14 @@ bool JogoDaVelha::JogadaValida(int linha, int coluna) const{
                 }
             }else{
                 std::cout << "É a vez de jogador 2" << std::endl;
-                std::cout << "Digite, nessa ordem, o número da linha e da coluna em que deseja realizar sua jogada." << std::endl << "(esperando jogada)" << std::endl;
+                  std::cout << "Digite a linha e a coluna que deseja jogar: (Ex: 2 3) " << std::endl;
                 while(1){
                     std::cin >> lin >> col;
                     if(this->JogadaValida(lin - 1,col - 1)){
                         this->RealizarJogada(lin - 1,col - 1,'O');
                         break;
                     }else{
-                        std::cout << "Jogada inválida, tente novamente." << std::endl << "(esperando jogada)" << std::endl;
+                        std::cout << "Erro: Jogada inválida. Tente novamente." << std::endl;
                         continue;
                     }       
                 }
