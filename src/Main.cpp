@@ -23,20 +23,9 @@ int main()
         int opcao;
         std::cin >> opcao;
     
-        cadastro cadastro;
-    
-        string ap1, ap2;
-        jogador jogador1, jogador2;
-    
         switch(opcao)
         {
             case 1:
-                std::cout << "Digite o apelido do jogador 1: ";
-                std::cin >> ap1;
-    
-                std::cout << "Digite o apelido do jogador 2: ";
-                std::cin >> ap2;
-    
                 ExecutarPartida jogo; 
                 jogo.IniciarJogo();
     
