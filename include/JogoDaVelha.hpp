@@ -2,7 +2,9 @@
 #define JOGO_DA_VELHA_H
 
 #include "JogoDeTabuleiro.hpp"
-
+/** 
+* @brief Classe que especializa a classe abstrata para o jogo da velha
+*/
 class JogoDaVelha: public JogoDeTabuleiro{
     public:
     JogoDaVelha();
