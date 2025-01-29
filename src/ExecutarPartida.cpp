@@ -16,8 +16,6 @@ void ExecutarPartida::IniciarJogo()
 
     int j;
 
-    CadastroDeJogadores cadastro;
-
     while (jogarNovamente) 
     {
         std::cout << "Escolha um jogo para jogar: \n";
