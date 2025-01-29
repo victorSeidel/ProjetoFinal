@@ -1,4 +1,4 @@
-#include "Jogador.h"
+#include "Jogador.hpp"
 #include <sstream>
 
 std::string Jogador::serialize() const {
