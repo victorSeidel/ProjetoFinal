@@ -43,6 +43,7 @@ class JogoDeTabuleiro
         * @brief verifica se a jogada escolhida é válida
         * @param linha linha da jogada
         * @param coluna coluna da jogada
+        * @return valor que indica a validade da jogada (true ou false)
         */
         virtual bool JogadaValida(int linha, int coluna) const = 0;
 
@@ -62,11 +63,13 @@ class JogoDeTabuleiro
         /**
         * @brief verifica se algum dos jogadores ganhou após sua última jogada
         * @param jogador jogador 1 (X) ou jogador 2 (O)
+        * @return True caso o jogador tenha ganhado, false caso contrário
         */
         virtual bool VerificarVitoria(char jogador) const = 0;
 
         /**
         * @brief implementa o loop de gameplay do jogo
+        * @return número que indica o jogador vencedor
         */
         virtual int ExecutarPartida() = 0;
 };
