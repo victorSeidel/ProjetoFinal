@@ -38,8 +38,11 @@ JogoDaVelha::JogoDaVelha():JogoDeTabuleiro::JogoDeTabuleiro(3,3){}
         std::cout << "\n";
     }
 }
-bool JogoDaVelha::JogadaValida(int linha, int coluna) const{
-    return linha >= 0 && linha < linhas && coluna >= 0 && coluna < colunas && tabuleiro[linha][coluna] == '.';
+bool JogoDaVelha::JogadaValida(int linha, int coluna) const {
+    // Verifica se os índices estão dentro dos limites do tabuleiro (0 a 2)
+    return linha >= 0 && linha < linhas && 
+           coluna >= 0 && coluna < colunas && 
+           tabuleiro[linha][coluna] == '.';
 }
     void JogoDaVelha::RealizarJogada(int linha, int coluna, char jogador){
         this->tabuleiro[linha][coluna] = jogador;
@@ -56,7 +59,6 @@ bool JogoDaVelha::JogadaValida(int linha, int coluna) const{
         int num_jogadas = 0;
         while(num_jogadas < 9){
             this->ImprimirTabuleiro();
-            num_jogadas++;
             int lin,col;
             if(num_jogadas%2 != 0){
                 std::cout << "É a vez do jogador 1" << std::endl;
@@ -65,6 +67,7 @@ bool JogoDaVelha::JogadaValida(int linha, int coluna) const{
                     std::cin >> lin >> col;
                     if(this->JogadaValida(lin - 1,col - 1)){
                         this->RealizarJogada(lin - 1,col - 1,'X');
+                        num_jogadas++;
                         break;
                     }else{
                         std::cout << "Erro: Jogada inválida. Tente novamente." << std::endl;
@@ -85,6 +88,7 @@ bool JogoDaVelha::JogadaValida(int linha, int coluna) const{
                     std::cin >> lin >> col;
                     if(this->JogadaValida(lin - 1,col - 1)){
                         this->RealizarJogada(lin - 1,col - 1,'O');
+                        num_jogadas++;
                         break;
                     }else{
                         std::cout << "Erro: Jogada inválida. Tente novamente." << std::endl;
