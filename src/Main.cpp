@@ -18,7 +18,7 @@ int main()
 
     switch(opcao)
     {
-        case 1:
+        case 1: {}
             string ap1, ap2;
 
             std::cout << "Digite o apelido do jogador 1: ";
