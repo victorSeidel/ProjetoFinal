@@ -1,7 +1,7 @@
 #ifndef CADASTRO_DE_JOGADORES_HPP
 #define CADASTRO_DE_JOGADORES_HPP
 
-#include "Jogador.h"
+#include "Jogador.hpp"
 #include <vector>
 #include <fstream>
 #include <iostream>
