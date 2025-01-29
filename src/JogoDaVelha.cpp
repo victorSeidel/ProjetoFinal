@@ -103,6 +103,7 @@ bool JogoDaVelha::JogadaValida(int linha, int coluna){
         }
         this->Reiniciar();
     }
-    int JogoDaVelha::Jogar(jogador& j1, jogador& j2){
+    int JogoDaVelha::Jogar()
+    {
         return this->ExecutarPartida(j1,j2);
     }
