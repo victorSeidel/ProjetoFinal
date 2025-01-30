@@ -2,30 +2,21 @@
  * 
  */
 #include "JogoDaVelha.hpp"
+#include <limits>
+#include <sstream>
+
 JogoDaVelha::JogoDaVelha():JogoDeTabuleiro::JogoDeTabuleiro(3,3){}
-    bool JogoDaVelha::VerificarVitoria(char j1)const{
-        if(this->tabuleiro[0][0] == j1 && this->tabuleiro[0][1] == j1 && this->tabuleiro[0][2] == j1){
+
+bool JogoDaVelha::VerificarVitoria(char j1) const {
+    for (int i = 0; i < 3; ++i) {
+        if ((tabuleiro[i][0] == j1 && tabuleiro[i][1] == j1 && tabuleiro[i][2] == j1) ||
+            (tabuleiro[0][i] == j1 && tabuleiro[1][i] == j1 && tabuleiro[2][i] == j1)) {
             return true;
-        } else if(this->tabuleiro[1][0] == j1 && this->tabuleiro[1][1] == j1 && this->tabuleiro[1][2] == j1){
-            return true;
-        }else if(this->tabuleiro[2][0] == j1 && this->tabuleiro[2][1] == j1 && this->tabuleiro[2][2] == j1){
-            return true;
-        }else if(this->tabuleiro[0][0] == j1 && this->tabuleiro[1][1] == j1 && this->tabuleiro[2][2] == j1){
-            return true;
-        } else if(this->tabuleiro[0][2] == j1 && this->tabuleiro[1][1] == j1 && this->tabuleiro[2][0] == j1){
-            return true;
-        }else if(this->tabuleiro[0][0] == j1 && this->tabuleiro[1][0] == j1 && this->tabuleiro[2][0] == j1){
-            return true;
-        }else if(this->tabuleiro[0][1] == j1 && this->tabuleiro[1][1] == j1 && this->tabuleiro[2][1] == j1){
-            return true;
-        } else if(this->tabuleiro[0][2] == j1 && this->tabuleiro[1][2] == j1 && this->tabuleiro[2][2] == j1){
-            return true;
-        }else{
-            return false;
         }
     }
-
-    //JogoDaVelha::~JogoDaVelha() = default;
+    return (tabuleiro[0][0] == j1 && tabuleiro[1][1] == j1 && tabuleiro[2][2] == j1) ||
+           (tabuleiro[0][2] == j1 && tabuleiro[1][1] == j1 && tabuleiro[2][0] == j1);
+}
 
     void JogoDaVelha::ImprimirTabuleiro() const {
     for (const auto& linha : tabuleiro) 
@@ -37,79 +28,88 @@ JogoDaVelha::JogoDaVelha():JogoDeTabuleiro::JogoDeTabuleiro(3,3){}
 
         std::cout << "\n";
     }
+    std::cout << "\n";
 }
+
 bool JogoDaVelha::JogadaValida(int linha, int coluna) const {
     // Verifica se os índices estão dentro dos limites do tabuleiro (0 a 2)
     return linha >= 0 && linha < linhas && 
            coluna >= 0 && coluna < colunas && 
            tabuleiro[linha][coluna] == '.';
 }
+
     void JogoDaVelha::RealizarJogada(int linha, int coluna, char jogador){
         this->tabuleiro[linha][coluna] = jogador;
     }
+    
     void JogoDaVelha::Reiniciar(){
     for (auto& linha : tabuleiro) 
     {
         std::fill(linha.begin(), linha.end(), '.');
     }
 }
-    int JogoDaVelha::ExecutarPartida()
-{
-        std::cout << "O jogador 1 sera representado por um X e o jogador 2 por uma O." << std::endl;
-        int num_jogadas = 0;
-        while(num_jogadas < 9){
-            this->ImprimirTabuleiro();
-            int lin,col;
-            if(num_jogadas%2 != 0){
-                std::cout << "E a vez do jogador 1" << std::endl;
-                std::cout << "Digite a linha e a coluna que deseja jogar: (Ex: 2 3) " << std::endl;
-                while(1){
-                    std::cin >> lin >> col;
-                    if(this->JogadaValida(lin - 1,col - 1)){
-                        this->RealizarJogada(lin - 1,col - 1,'X');
-                        num_jogadas++;
-                        break;
-                    }else{
-                        std::cout << "Erro: Jogada invalida. Tente novamente." << std::endl;
-                        continue;
-                    }       
-                }
-                if(this->VerificarVitoria('X')){
-                    std::cout << "Jogador 1 ganhou!" << std::endl;
-                    num_jogadas = 0;
-                    return 1;
-                }else{
-                    continue;
-                }
-            }else{
-                std::cout << "E a vez de jogador 2" << std::endl;
-                  std::cout << "Digite a linha e a coluna que deseja jogar: (Ex: 2 3) " << std::endl;
-                while(1){
-                    std::cin >> lin >> col;
-                    if(this->JogadaValida(lin - 1,col - 1)){
-                        this->RealizarJogada(lin - 1,col - 1,'O');
-                        num_jogadas++;
-                        break;
-                    }else{
-                        std::cout << "Erro: Jogada invalida. Tente novamente." << std::endl;
-                        continue;
-                    }       
-                }
-                if(this->VerificarVitoria('O')){
-                    std::cout << " Jogador 2 ganhou!" << std::endl;
-                    num_jogadas = 0;
-                    return 2;
-                }else{
-                    continue;
-                }
+
+int JogoDaVelha::ExecutarPartida() {
+    std::cout << "Jogador 1: X | Jogador 2: O\n";
+    int num_jogadas = 0;
+
+    // Limpa o buffer residual antes de iniciar
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    while (num_jogadas < 9) {
+        ImprimirTabuleiro();
+        int lin, col;
+        char jogador_atual = (num_jogadas % 2 == 0) ? 'X' : 'O';
+
+        while (true) {
+            std::cout << "Vez do Jogador " << ((jogador_atual == 'X') ? "1 (X)" : "2 (O)") << std::endl;
+            std::cout << "Digite linha e coluna (1-3): ";
+
+            std::string entrada;
+            std::getline(std::cin, entrada);
+
+            // Verifica entrada vazia
+            if (entrada.empty()) {
+                std::cout << "Erro: Insira dois numeros separados por espaço (ex: 1 3)." << std::endl;
+                continue;
             }
 
+            std::stringstream ss(entrada);
+
+            if (!(ss >> lin >> col)) {
+                std::cout << "Erro: Formato invalido! Use dois números separados por espaço (ex: 1 3)." << std::endl;
+                continue;
+            }
+
+            if (lin < 1 || lin > 3 || col < 1 || col > 3) {
+                std::cout << "Erro: Valores devem ser entre 1 e 3!" << std::endl;
+                continue;
+            }
+
+            if (JogadaValida(lin - 1, col - 1)) {
+                break;
+            } else {
+                std::cout << "Erro: Posicao ocupada!" << std::endl;
+            }
         }
-        if(num_jogadas == 9){
-            std::cout << "O jogo terminou empatado." << std::endl;
+
+        RealizarJogada(lin - 1, col - 1, jogador_atual);
+        num_jogadas++;
+
+        if (VerificarVitoria(jogador_atual)) {
+            ImprimirTabuleiro();
+            std::cout << "Jogador " << ((jogador_atual == 'X') ? "1 (X)" : "2 (O)") << " ganhou!" << std::endl;
+            Reiniciar();
+            return (jogador_atual == 'X') ? 1 : 2;
         }
-        this->Reiniciar();
     }
+
+    // Empate
+    ImprimirTabuleiro();
+    std::cout << "O jogo terminou empatado." << std::endl;
+    Reiniciar();
+    }
+    
     int JogoDaVelha::Jogar()
     {
         return this->ExecutarPartida();

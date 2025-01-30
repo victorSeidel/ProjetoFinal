@@ -1,6 +1,6 @@
 #include <iostream>
-
 #include "Lig4.hpp"
+#include <limits>
 
 Lig4::Lig4() : JogoDeTabuleiro(6, 7) {}
 
@@ -111,14 +111,27 @@ int Lig4::ExecutarPartida()
         ImprimirTabuleiro();
         int coluna;
 
-        std::cout << std::endl << "Jogador " << jogadorAtual << ", escolha uma coluna (1 a 7): ";
+        // Loop de validação da entrada do jogador
+        while (true) {
+            std::cout << std::endl << "Jogador " << jogadorAtual << ", escolha uma coluna (1 a 7): ";
+            
+            // Verifica se a entrada é numérica
+            if (!(std::cin >> coluna)) 
+            {
+                std::cout << "Erro: Insira um numero valido (1 a 7)!" << std::endl;
+                std::cin.clear(); // Limpa o estado de erro
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Limpa o buffer
+                continue;
+            }
 
-        std::cin >> coluna;
-
-        if (coluna < 1 || coluna > 7) 
-        {
-            std::cout << "Erro: Jogada invalida! Escolha uma coluna de 1 a 7." << std::endl;
-            continue;
+            // Verifica intervalo
+            if (coluna < 1 || coluna > 7) 
+            {
+                std::cout << "Erro: Coluna invalida! Escolha entre 1 e 7." << std::endl;
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                continue;
+            }
+        break;
         }
 
         try 
@@ -129,10 +142,7 @@ int Lig4::ExecutarPartida()
             if (VerificarVitoria(jogadorAtual)) 
             {
                 std::cout << "O jogador " << jogadorAtual << " venceu!" << std::endl;
-
-                if (jogadorAtual == 'X') jogador = 1;
-                else if (jogadorAtual == 'O') jogador = 2;
-
+                jogador = (jogadorAtual == 'X') ? 1 : 2;
                 jogoAtivo = false;
             } 
             else 
