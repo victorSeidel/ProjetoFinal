@@ -51,7 +51,7 @@ void ExecutarPartida::IniciarJogo()
                 break;
    
             default:
-                std::cout << "Erro: Opção invalida! Escolha um número de 1 a 3 \n";
+                std::cout << "Erro: Opcao invalida! Escolha um numero de 1 a 3 \n";
                 return;
         }
 
@@ -81,7 +81,7 @@ void ExecutarPartida::IniciarJogo()
             }
             else 
             {
-                std::cout << "Erro: Opcao invalida! Digite S (sim) ou N (não)." << std::endl;
+                std::cout << "Erro: Opção invalida! Digite S (sim) ou N (nao)." << std::endl;
                 return;
             }
         }
