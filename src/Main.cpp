@@ -7,11 +7,11 @@
 
 void exibirMenu() {
     std::cout << "\nComandos disponiveis:\n";
-    std::cout << "CJ <Apelido> <Nome>        - Cadastrar jogador\n";
-    std::cout << "RJ <Apelido>               - Remover jogador\n";
-    std::cout << "LJ [A|N]                   - Listar jogadores ordenados\n";
-    std::cout << "EP <Jogo: R|L|V> <Jog1> <Jog2> - Executar partida\n";
-    std::cout << "FS                         - Finalizar sistema\n";
+    std::cout << "CJ <Apelido> <Nome>             - Cadastrar jogador\n";
+    std::cout << "RJ <Apelido>                    - Remover jogador\n";
+    std::cout << "LJ [A|N]                        - Listar jogadores ordenados\n";
+    std::cout << "EP <Jogo: R|L|V> <Jog1> <Jog2>  - Executar partida\n";
+    std::cout << "FS                              - Finalizar sistema\n";
 }
 
 int main() {
@@ -34,7 +34,7 @@ int main() {
             if (ss >> apelido >> nome) {
                 std::cout << cadastro.cadastrar(apelido, nome) << "\n";
             } else {
-                std::cout << "ERRO: dados incorretos\n";
+                std::cout << "ERRO: Dados incorretos. \n";
             }
         } 
         else if (comando == "RJ") {
@@ -42,7 +42,7 @@ int main() {
             if (ss >> apelido) {
                 std::cout << cadastro.remover(apelido) << "\n";
             } else {
-                std::cout << "ERRO: dados incorretos\n";
+                std::cout << "ERRO: Dados incorretos. \n";
             }
         } 
         else if (comando == "LJ") {
@@ -50,7 +50,7 @@ int main() {
             if (ss >> ordem && (ordem == 'A' || ordem == 'N')) {
                 cadastro.listar(ordem);
             } else {
-                std::cout << "ERRO: use 'LJ A' ou 'LJ N'\n";
+                std::cout << "ERRO: Use 'LJ A' ou 'LJ N. '\n";
             }
         } 
         else if (comando == "EP") {
@@ -74,7 +74,7 @@ int main() {
                 else if (jogo == "L") codigoJogo = 2; // Lig4
                 else if (jogo == "V") codigoJogo = 3; // Velha
                 else {
-                    std::cout << "ERRO: jogo invalido. Use R, L ou V\n";
+                    std::cout << "ERRO: Jogo invalido. Use R, L ou V. \n";
                     continue;
                 }
 
@@ -119,7 +119,7 @@ int main() {
                 exibirMenu();
 
             } else {
-                std::cout << "ERRO: Formato incorreto. Use: EP <R|L|V> <apelido1> <apelido2>\n";
+                std::cout << "ERRO: Formato incorreto. Use: EP <R|L|V> <apelido1> <apelido2> \n";
             }
         } 
         else if (comando == "FS") {
@@ -127,7 +127,7 @@ int main() {
             break;
         } 
         else {
-            std::cout << "ERRO: comando desconhecido\n";
+            std::cout << "ERRO: Comando desconhecido. \n";
             exibirMenu();
         }
     }
