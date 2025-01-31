@@ -14,7 +14,7 @@ class CadastroJogadores
 {
     private:
         /**
-        * @brief Estrutura de dados Mapp para armazenar os jogadores cadastrados, utilizando o apelido do jogador como chave.
+        * @brief Estrutura de dados Map para armazenar os jogadores cadastrados, utilizando o apelido do jogador como chave.
         */
         std::map<std::string, Jogador> jogadores;
         /**
@@ -26,18 +26,18 @@ class CadastroJogadores
         // Operações básicas
         /**
         * @brief Método para cadastrar novos jogadores e adicionar ao mapa.
-        * @param apelido apelido único para cadastro
-        * @param nome nome do jogador
+        * @param apelido Apelido único para cadastro.
+        * @param nome Nome do jogador.
         */
         std::string cadastrar(const std::string& apelido, const std::string& nome);
         /**
         * @brief Método para remover cadastro de jogadores.
-        * @param apelido remover cadastro com tal apelido
+        * @param apelido Apelido do jogador que será removido.
         */
         std::string remover(const std::string& apelido);
         /**
         * @brief Método para listar os jogadores cadastrados.
-        * @param ordernarPor ordernar por nome ou apelido
+        * @param ordernarPor Representa como a listagem será feita, ou seja, por apelido ("A") ou por ranking de vitórias ("R").
         */
         void listar(char ordenarPor);
     
@@ -54,12 +54,12 @@ class CadastroJogadores
         // Consultas
         /**
         * @brief Verifica se existe um cadastro.
-        * @param apelido apelido que será verificado
+        * @param apelido Apelido que será verificado.
         */
         bool jogadorExiste(const std::string& apelido) const;
         /**
         * @brief Retorna um objeto do tipo jogador.
-        * @param apelido retorna o jogador com esse apelido
+        * @param apelido Apelido do jogador que deve ser retornado.
         */
         Jogador& getJogador(const std::string& apelido);
 };
