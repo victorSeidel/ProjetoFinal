@@ -1,4 +1,4 @@
-#include "cadastro.hpp"
+#include "Cadastro.hpp"
 #include <fstream>
 #include <iostream>
 #include <algorithm>
@@ -8,8 +8,9 @@
 
 // Implementações dos métodos
 
-std::string CadastroJogadores::cadastrar(const std::string& apelido, const std::string& nome) {
-    if (apelido.empty() || nome.empty()) return "ERRO: dados incorretos";
+std::string CadastroJogadores::cadastrar(const std::string& apelido, const std::string& nome) 
+{
+    if (apelido.empty() || nome.empty())            return "ERRO: dados incorretos";
     if (jogadores.find(apelido) != jogadores.end()) return "ERRO: jogador repetido";
     
     Jogador novoJogador;
@@ -20,30 +21,40 @@ std::string CadastroJogadores::cadastrar(const std::string& apelido, const std::
     return "Jogador " + apelido + " cadastrado com sucesso";
 }
 
-std::string CadastroJogadores::remover(const std::string& apelido) {
+std::string CadastroJogadores::remover(const std::string& apelido) 
+{
     auto it = jogadores.find(apelido);
     if (it == jogadores.end()) return "ERRO: jogador inexistente";
     
     jogadores.erase(it);
+    
     salvarEmArquivo();
+    
     return "Jogador " + apelido + " removido com sucesso";
 }
 
-void CadastroJogadores::listar(char ordenarPor) {
+void CadastroJogadores::listar(char ordenarPor)
+{
     std::vector<Jogador> lista;
     for (const auto& pair : jogadores) lista.push_back(pair.second);
 
-    if (ordenarPor == 'N') {
-        std::sort(lista.begin(), lista.end(), [](const Jogador& a, const Jogador& b) {
+    if (ordenarPor == 'N') 
+    {
+        std::sort(lista.begin(), lista.end(), [](const Jogador& a, const Jogador& b) 
+        {
             return a.nome < b.nome;
         });
-    } else {
-        std::sort(lista.begin(), lista.end(), [](const Jogador& a, const Jogador& b) {
+    } 
+    else 
+    {
+        std::sort(lista.begin(), lista.end(), [](const Jogador& a, const Jogador& b) 
+        {
             return a.apelido < b.apelido;
         });
     }
 
-    for (const auto& jogador : lista) {
+    for (const auto& jogador : lista) 
+    {
         std::cout << jogador.apelido << " " << jogador.nome << "\n";
         std::cout << "REVERSI - V: " << jogador.stats.vitorias_reversi 
                   << " D: " << jogador.stats.derrotas_reversi << "\n";
@@ -54,14 +65,18 @@ void CadastroJogadores::listar(char ordenarPor) {
     }
 }
 
-void CadastroJogadores::salvarEmArquivo() {
-    try {
+void CadastroJogadores::salvarEmArquivo() 
+{
+    try 
+    {
         std::ofstream file(arquivo);
-        if (!file) {
+        if (!file) 
+        {
             throw std::runtime_error("Não foi possível criar/abrir o arquivo.");
         }
 
-        for (const auto& pair : jogadores) {
+        for (const auto& pair : jogadores) 
+        {
             const Jogador& j = pair.second;
             file << j.apelido << ","
                  << j.nome << ","
@@ -73,24 +88,30 @@ void CadastroJogadores::salvarEmArquivo() {
                  << j.stats.derrotas_velha << "\n";
         }
         file.close();
-    } catch (const std::exception& e) {
+    } 
+    catch (const std::exception& e) 
+    {
         std::cerr << "Erro ao salvar dados: " << e.what() << std::endl;
     }
 }
 
-void CadastroJogadores::carregarDoArquivo() {
-    try {
+void CadastroJogadores::carregarDoArquivo() 
+{
+    try 
+    {
         std::ifstream file(arquivo);
         
         // Cria arquivo se não existir
-        if (!file) {
+        if (!file) 
+        {
             std::ofstream novoArquivo(arquivo); // Cria arquivo vazio
             std::cout << "Arquivo de jogadores criado.\n"; // Log para depuração
             return;
         }
 
         std::string linha;
-        while (std::getline(file, linha)) {
+        while (std::getline(file, linha)) 
+        {
             std::stringstream ss(linha);
             Jogador j;
             
@@ -99,14 +120,20 @@ void CadastroJogadores::carregarDoArquivo() {
             if (!std::getline(ss, j.nome, ',') || j.nome.empty()) continue;
 
             // Função auxiliar para ler valores numéricos com segurança
-            auto lerValor = [&](int& valor) {
+            auto lerValor = [&](int& valor)
+            {
                 std::string temp;
                 if (!std::getline(ss, temp, ',')) return false;
-                try {
+                
+                try 
+                {
                     valor = std::stoi(temp);
-                } catch (...) {
+                } 
+                catch (...) 
+                {
                     valor = 0;
                 }
+                
                 return true;
             };
 
@@ -120,20 +147,27 @@ void CadastroJogadores::carregarDoArquivo() {
 
             jogadores[j.apelido] = j;
         }
+        
         file.close();
-    } catch (const std::exception& e) {
+    } 
+    catch (const std::exception& e) 
+    {
         std::cerr << "Erro ao carregar dados: " << e.what() << std::endl;
     }
 }
 
-bool CadastroJogadores::jogadorExiste(const std::string& apelido) const {
+bool CadastroJogadores::jogadorExiste(const std::string& apelido) const 
+{
     return jogadores.find(apelido) != jogadores.end();
 }
 
-Jogador& CadastroJogadores::getJogador(const std::string& apelido) {
+Jogador& CadastroJogadores::getJogador(const std::string& apelido) 
+{
     auto it = jogadores.find(apelido);
-    if (it == jogadores.end()) {
+    if (it == jogadores.end()) 
+    {
         throw std::runtime_error("Jogador não encontrado: " + apelido);
     }
+    
     return it->second;
 }
