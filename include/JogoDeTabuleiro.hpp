@@ -34,6 +34,7 @@ class JogoDeTabuleiro
 
         /**
         * @brief Chama o método para executar a partida.
+        * @return Número que indica o jogador vencedor.
         */
         virtual int Jogar() = 0;
 
