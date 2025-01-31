@@ -4,6 +4,9 @@ Projeto final da disciplina Programação e Desenvolvimento de Software II do cu
 # Objetivo
 Aplicar os conceitos de programação orientada a objetos aprendidos durante a disciplina em um projeto de escopo grande.
 
+# Importante
+O sistema foi desenvolvido e testado utilizando o sistema operacional Windows 10.
+
 # Introdução
 O desafio era criar um sistema de jogos e implementar 3 jogos de tabuleiro: Jogo da velha, Lig4 e Reversi. O sistema também deveria ser capaz de realizar o cadastro de jogadores, no qual seriam salvos as estatísiticas de vitórias e derrotas em cada jogo. O cadastro deveria ser preservadas durante diferentes execuções do programa. Tudo isso deveria ser implementado utilizando-se dos conceitos de POO, modularização e corretude, na intenção de se criar um sistema confiável, reutilizável e de fácil manutenção e expansão.
 
