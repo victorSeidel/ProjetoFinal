@@ -35,6 +35,7 @@ class Lig4 : public JogoDeTabuleiro
     * @param dLinha Nova direção de verificação das linhas.
     * @param dColuna Nova direção de verificação das colunas.
     * @param jogador Jogador 1 (X) ou Jogador 2 (O).
+    * @return Retorna 1 se existe uma sequência com 4.
     */
     bool VerificarDirecao(int linha, int coluna, int dLinha, int dColuna, char jogador) const;
 
