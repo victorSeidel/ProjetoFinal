@@ -27,12 +27,6 @@ class Lig4 : public JogoDeTabuleiro
 
     int ExecutarPartida() override;
 
-    /**
-    * @brief Obtém o apelido de um jogador.
-    * @param Simbolo "X" ou "O" para representar cada jogador.
-    */
-    void DefinirApelidos(const std::string& x, const std::string& o);
-
     private:
     /**
     * @brief Retorna true se algum jogador tiver feito uma sequência com 4.
@@ -46,6 +40,19 @@ class Lig4 : public JogoDeTabuleiro
 
     std::string jogadorX;
     std::string jogadorO;
+
+    /**
+    * @brief Assinala "X" e "O" para os respectivos jogadores.
+    * @param x O apelido do jogador que terá "X" como símbolo.
+    * @param o O apelido do jogador que terá "O" como símbolo.
+    */
+    void DefinirApelidos(const std::string& x, const std::string& o);
+
+    /**
+    * @brief Obtém o apelido de um jogador.
+    * @param Simbolo "X" ou "O" para representar cada jogador.
+    * @return O apelido em si.
+    */
     std::string ObterApelido(char simbolo) const;
 
 };
