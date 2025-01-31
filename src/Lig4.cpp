@@ -112,7 +112,8 @@ int Lig4::ExecutarPartida()
         int coluna;
 
         // Loop de validação da entrada do jogador
-        while (true) {
+        while (true) 
+        {
             std::cout << std::endl << "Jogador " << jogadorAtual << ", escolha uma coluna (1 a 7): ";
             
             // Verifica se a entrada é numérica
@@ -131,7 +132,8 @@ int Lig4::ExecutarPartida()
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 continue;
             }
-        break;
+            
+            break;
         }
 
         try 
