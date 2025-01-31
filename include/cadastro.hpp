@@ -12,7 +12,7 @@
 class CadastroJogadores {
 private:
 /**
-* @brief Mapa com cada jogador cadastrado, utilizando o apelido do jogador como chave.
+* @brief Estrutura de dados Mapp para armazenar os jogadores cadastrados, utilizando o apelido do jogador como chave.
 */
     std::map<std::string, Jogador> jogadores;
 /**
