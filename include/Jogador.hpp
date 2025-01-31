@@ -4,11 +4,13 @@
 #include <string>
 #include <map>
 
-class Jogador {
+class Jogador 
+{
 public:
     std::string apelido;
     std::string nome;
-    struct Estatisticas {
+    struct Estatisticas 
+    {
         int vitorias_reversi = 0;
         int derrotas_reversi = 0;
         int vitorias_lig4 = 0;
