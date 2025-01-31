@@ -90,6 +90,7 @@ int main() {
                         dynamic_cast<Lig4*>(jogoPtr)->DefinirApelidos(apelido1, apelido2);
                     break;
                     case 3: // Velha
+                        std::cout << "Aperte ENTER para iniciar o jogo. \n";
                         jogoPtr = new JogoDaVelha();
                         dynamic_cast<JogoDaVelha*>(jogoPtr)->DefinirApelidos(apelido1, apelido2);
                     break;
