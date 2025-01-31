@@ -4,7 +4,7 @@
 #include "JogoDeTabuleiro.hpp"
 
 /**
- * @brief Classe que herda a classe JogoDeTabuleiro e implementa lógica do jogo Lig4.
+ * @brief Classe que herda a classe JogoDeTabuleiro e implementa a lógica do jogo Lig4.
  */
 class Lig4 : public JogoDeTabuleiro 
 {
