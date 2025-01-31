@@ -22,7 +22,3 @@ Cada partida ocorre entre dois jogadores, aos quais são assinalados um símbolo
 
 # Dificuldades
 A maior dificuldade observada por nós durante o desenvolvimento do projeto foi a de coordenar as atuações de cada membro do grupo e estabelecer uma comunicação clara e objetiva, mantendo a estrutura do programa como um todo funcional e compatível entre si. Além disso, fazer com que todos os arquivos pudessem ser compilados de forma conjunta também foi um desafio.
-
-# Extras
-Como um extra para o nosso programa, resolvemos implementar um quarto jogo: Damas. É um jogo divertido, com certa complexidade e que eleva o conceito de jogos de tabuleiros, tornando algo simples como mover peças em uma partida tensa, estratégica e com muito raciocínio lógico envolvido. É um dos jogos de tabuleiro mais clássicos que existem e por isso achamos que sua implementação agregaria em muito no nosso programa.
-
