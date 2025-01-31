@@ -32,11 +32,11 @@ class Lig4 : public JogoDeTabuleiro
     private:
     /**
     * @brief Retorna true se algum jogador tiver feito uma sequência com 4.
-    * @param linha verifica as linhas
-    * @param coluna verifica as colunas
-    * @param dLinha nova direção de verificação das linhas
-    * @param dColuna nova direção de verificação das colunas
-    * @param jogador jogador 1 (X) ou jogador 2 (O)
+    * @param linha Verifica as linhas.
+    * @param coluna Verifica as colunas.
+    * @param dLinha Nova direção de verificação das linhas.
+    * @param dColuna Nova direção de verificação das colunas.
+    * @param jogador Jogador 1 (X) ou Jogador 2 (O).
     */
     bool VerificarDirecao(int linha, int coluna, int dLinha, int dColuna, char jogador) const;
 
