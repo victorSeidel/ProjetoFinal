@@ -1,17 +1,25 @@
 # ProjetoFinal
-Projeto final da disciplina Programação e Desenvolvimento de Software II do curso de Ciência da Computação da UFMG.
+Projeto final da disciplina Programação e Desenvolvimento de Software II do curso de Ciência da Computação da Universidade Federal de Minas Gerais.
+
+# Objetivo
+Aplicar os conceitos de programação orientada a objetos aprendidos durante a disciplina em um projeto de escopo grande.
 
 # Introdução
-O problema principal a ser resolvido era a implementação de 3 jogos - Lig4, jogo da velha e reversi - com base em classes herdeiras de uma classe abstrata para jogos. Além disso, era preciso fazer um sistema de cadastro de jogadores, o qual conteria as estatísticas dos jogadores (vitórias e derrotas em cada um dos jogos) e seria preservado entre diferentes execuções. Por fim, foi fortememte sugerido que algum tipo de funcionalidade extra fosse implementada.
+O desafio era criar um sistema de jogos e implementar 3 jogos de tabuleiro: Jogo da velha, Lig4 e Reversi. O sistema também deveria ser capaz de realizar o cadastro de jogadores, no qual seriam salvos as estatísiticas de vitórias e derrotas em cada jogo. O cadastro deveria ser preservadas durante diferentes execuções do programa. Tudo isso deveria ser implementado utilizando-se dos conceitos de POO, modularização e corretude, na intenção de se criar um sistema confiável, reutilizável e de fácil manutenção e expansão.
+
 # A Solução
-Para fazer o que foi pedido, foram implementadas, além da classe abstrata e as suas herdeiras, a classe "ExecutarPartida". Passemos à análise delas, indicando o que fazem os seus métodos e o que representam os seus atributos.
+Para alcançarmos o que foi solicitado, foi criada uma classe abstrata "JogoDeTabuleiro", no qual contém os atributos primoridiais e todas as funções comuns entre jogos de tabuleiro, classe essa que foi herdada e especializada por cada classe própria de um jogo. Além disso, foram criadas as classes "Jogador" com os atributos necessários a serem salvos e "Cadastro", para controlar a inclusão e o salvamento dos jogadores. Abaixo está listado as principais classes e um detalhamento maior de seus métodos e atributos.
 
-"JogoDeTabuleiro": contém métodos virtuais para verificar a validade de jogadas, realizar jogadas, verificar a vitória de algum jogador, reiniciar o tabuleiro após uma partida e iniciar uma partida. Tem como atributo um vetor 2D que representa o tabuleiro. As classes herdeiras simplesmente sobrescrevem esses métodos para seus propósitos.
+"JogoDeTabuleiro": classe abstrata que ontém métodos virtuais para verificar a validade de jogadas, realizar jogadas, verificar a vitória de algum jogador, reiniciar o tabuleiro após uma partida e iniciar uma partida. Tem como atributo uma matriz de duas dimensões que representa o tabuleiro. As classes herdeiras sobrescrevem e/ou especializam esses métodos para seus propósitos.
 
-"ExecutarPartida": contém um método que verifica qual o jogo desejado e inicia a lógica dele.
+"Cadastro": classe responsável por armazenar todos os jogadores cadastrados em um map. Ela cadastrar, remove e lista os jogadores, verifica a existência (ou não) de cadastros e salva tudo em um arquvivo de texto para posteriormente ser lido e carregada as informações em uma nova execução do programa.
 
-As entradas tomadas por nosso programa diferem dos exemplos dados no enunciado do trabalho. Baseada na ideia de implementação do nosso grupo, consideramos que as entradas escolhidas são mais intuitivas e correspondem melhor à estrutura do código desenvolvido por nós, mantendo nosso método main mais 'clean' e fácil de entender. Além disso, os dados esperados do usuário são informados explicitamente durante a execução do código, portanto a mudança não acarreta em problemas.                   
 # Partidas
-Cada partida ocorre entre dois jogadores, aos quais são assinalados um símbolo "X" ou "O", que representam as suas jogadas. É, então, requisitado que o primeiro jogador faça sua jogada, informando as coordenadas da sua jogada. É testado se essa jogada é válida, e então, se for, ela é realizada e o tabuleiro é imprimido. Isso ocorre até que um jogador ganhe ou ocorra um empate, dependendo da lógica de cada jogo.
+Cada partida ocorre entre dois jogadores, aos quais são assinalados um símbolo "X" ou "O", que representam as suas jogadas no tabubleiro. É, então, requisitado que o primeiro jogador faça sua jogada, informando as coordenadas x e y do tabuleiro em que deseja operar. É testado se essa jogada é válida e em caso positivo, ela é realizada, salva na matriz e o tabuleiro é mostrado para o jogador. Isso ocorre diversas vezes até que um jogador ganhe ou ocorra um empate, a depender da lógica implementada em cada jogo.
+
 # Dificuldades
-A maior dificuldade foi coordenar as atuações de cada membro do grupo, mantendo a estrutura em todo funcional. Além disso, fazer com que todos os arquivos pudessem ser compilados de forma conjunta e funcional também foi um desafio.
+A maior dificuldade observada por nós durante o desenvolvimento do projeto foi a de coordenar as atuações de cada membro do grupo e estabelecer uma comunicação clara e objetiva, mantendo a estrutura do programa como um todo funcional e compatível entre si. Além disso, fazer com que todos os arquivos pudessem ser compilados de forma conjunta também foi um desafio.
+
+# Extras
+Como um extra para o nosso programa, resolvemos implementar um quarto jogo: Damas. É um jogo divertido, com certa complexidade e que eleva o conceito de jogos de tabuleiros, tornando algo simples como mover peças em uma partida tensa, estratégica e com muito raciocínio lógico envolvido. É um dos jogos de tabuleiro mais clássicos que existem e por isso achamos que sua implementação agregaria em muito no nosso programa.
+
