@@ -10,7 +10,10 @@
 class JogoDeTabuleiro 
 {
     protected:
-        std::vector<std::vector<char>> tabuleiro; /** tabuleiro representado por caracteres */
+         /**
+        * @brief Estrutura de dados vector para simular o tabuleiro representado por caracteres
+        */
+        std::vector<std::vector<char>> tabuleiro;
         int linhas; /** número de linhas no tabuleiro */
         int colunas; /** número de colunas no tabuleiro */
     
