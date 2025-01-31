@@ -110,15 +110,17 @@ int JogoDaVelha::ExecutarPartida() {
         if (VerificarVitoria(jogador_atual)) {
             ImprimirTabuleiro();
             std::cout << ObterApelido(jogador_atual) << " ganhou!" << std::endl;
+            std::cout << "Aperte ENTER para voltar ao menu. \n";
             Reiniciar();
             return (jogador_atual == 'X') ? 1 : 2;
         }
     }
 
-    // Empate
-    ImprimirTabuleiro();
-    std::cout << "O jogo terminou empatado." << std::endl;
-    Reiniciar();
+        // Empate
+        ImprimirTabuleiro();
+        std::cout << "O jogo terminou empatado." << std::endl;
+        std::cout << "Aperte ENTER para voltar ao menu. \n";
+        Reiniciar();
     }
     
     int JogoDaVelha::Jogar()
