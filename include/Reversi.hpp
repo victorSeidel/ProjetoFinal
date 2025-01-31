@@ -9,6 +9,8 @@ class Reversi : public JogoDeTabuleiro {
 private:
     char jogadorAtual;
     bool jogoFinalizado;
+    std::string jogadorX;
+    std::string jogadorO;
 
     // Métodos auxiliares
     bool VerificarDirecao(int linha, int coluna, int dirLinha, int dirColuna) const;
@@ -20,6 +22,8 @@ public:
     Reversi();
     virtual ~Reversi() override = default;
 
+    void DefinirApelidos(const std::string& x, const std::string& o);
+    std::string ObterApelido(char simbolo) const;
     // Métodos sobrescritos
     virtual int Jogar() override;
     virtual void ImprimirTabuleiro() const override;

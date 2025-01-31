@@ -4,7 +4,19 @@
 #include "JogoDeTabuleiro.hpp"
 
 class JogoDaVelha: public JogoDeTabuleiro{
-    public:
+
+private:
+
+
+    std::string jogadorX;
+    std::string jogadorO;
+    std::string ObterApelido(char simbolo) const;
+
+
+public:
+
+
+    void DefinirApelidos(const std::string& x, const std::string& o);
     JogoDaVelha();
     virtual ~JogoDaVelha() = default;
     bool JogadaValida(int linha, int coluna) const override;

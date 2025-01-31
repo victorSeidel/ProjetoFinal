@@ -6,6 +6,15 @@ Lig4::Lig4() : JogoDeTabuleiro(6, 7) {}
 
 Lig4::~Lig4() {}
 
+void Lig4::DefinirApelidos(const std::string& x, const std::string& o) {
+    jogadorX = x;
+    jogadorO = o;
+}
+
+std::string Lig4::ObterApelido(char simbolo) const {
+    return (simbolo == 'X') ? jogadorX : jogadorO;
+}
+
 void Lig4::ImprimirTabuleiro() const 
 {
     for (const auto& linha : tabuleiro) 
@@ -112,9 +121,8 @@ int Lig4::ExecutarPartida()
         int coluna;
 
         // Loop de validação da entrada do jogador
-        while (true) 
-        {
-            std::cout << std::endl << "Jogador " << jogadorAtual << ", escolha uma coluna (1 a 7): ";
+        while (true) {
+            std::cout << std::endl << "Jogador " << ObterApelido(jogadorAtual) << ", escolha uma coluna (1 a 7): ";
             
             // Verifica se a entrada é numérica
             if (!(std::cin >> coluna)) 
@@ -132,8 +140,7 @@ int Lig4::ExecutarPartida()
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 continue;
             }
-            
-            break;
+        break;
         }
 
         try 
@@ -143,7 +150,7 @@ int Lig4::ExecutarPartida()
 
             if (VerificarVitoria(jogadorAtual)) 
             {
-                std::cout << "O jogador " << jogadorAtual << " venceu!" << std::endl;
+                std::cout << "O jogador " << ObterApelido(jogadorAtual) << " venceu!" << std::endl;
                 jogador = (jogadorAtual == 'X') ? 1 : 2;
                 jogoAtivo = false;
             } 

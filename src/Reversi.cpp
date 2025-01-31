@@ -24,8 +24,9 @@ Reversi::Reversi() : JogoDeTabuleiro(8, 8), jogadorAtual('X'), jogoFinalizado(fa
  */
 void Reversi::ExibirInstrucoes() const {
     std::cout << "\n=== REVERSI ===\n";
+    std::cout << "Jogadores: " << jogadorX << " (X) vs " << jogadorO << " (O)\n";
     std::cout << "Instrucoes:\n";
-    std::cout << "1. Objetivo: Ter mais pecas (" << jogadorAtual << ") no tabuleiro\n";
+    std::cout << "1. Objetivo: " << jogadorX << " (X) e " << jogadorO << " (O) competem para ter mais pecas\n";
     std::cout << "2. Coloque uma peca que flanqueie as pecas do oponente\n";
     std::cout << "3. Flanquear = cercar pecas adversarias em linha reta (horizontal, vertical ou diagonal)\n";
     std::cout << "4. Formato: Letra (coluna) + Numero (linha). Ex: C4\n";
@@ -33,6 +34,15 @@ void Reversi::ExibirInstrucoes() const {
     std::cout << "   - 'sair': Encerra o jogo\n";
     std::cout << "   - 'instrucoes': Mostra este guia\n";
     std::cout << "------------------------------------------------\n";
+}
+
+void Reversi::DefinirApelidos(const std::string& x, const std::string& o) {
+    jogadorX = x;
+    jogadorO = o;
+}
+
+std::string Reversi::ObterApelido(char simbolo) const {
+    return (simbolo == 'X') ? jogadorX : jogadorO; // Já implementado
 }
 
 /**
@@ -130,7 +140,7 @@ void Reversi::RealizarJogada(int linha, int coluna, char jogador) {
         if (!PodeJogar(jogador)) {
             jogoFinalizado = true;
         } else {
-            std::cout << "Jogador " << proximoJogador << " nao pode jogar. Turno mantido.\n";
+            std::cout << ObterApelido(proximoJogador) << " nao pode jogar. Turno mantido.\n";
         }
     }
     jogadorAtual = proximoJogador;
@@ -177,6 +187,7 @@ int Reversi::ExecutarPartida() {
     std::string entrada;
     bool instrucoesMostradas = false;
 
+
     while (!jogoFinalizado) {
         if (!instrucoesMostradas) {
             ExibirInstrucoes();
@@ -188,14 +199,13 @@ int Reversi::ExecutarPartida() {
                 jogoFinalizado = true;
                 break;
             }
-            std::cout << "Jogador " << jogadorAtual << " nao pode jogar. Passando a vez.\n";
+            std::cout << ObterApelido(jogadorAtual) << " nao pode jogar. Passando a vez.\n";
             jogadorAtual = (jogadorAtual == 'X') ? 'O' : 'X';
             continue;
         }
 
         ImprimirTabuleiro();
-        std::cout << "\nJogador " << jogadorAtual << ", insira uma posicao (ex: A1), ";
-        std::cout << "'sair' ou 'instrucoes': "; // Atualizado
+        std::cout << "\n" << ObterApelido(jogadorAtual) << ", insira uma posicao (ex: A1), 'sair' ou 'instrucoes': ";
         std::cin >> entrada;
 
         if (entrada == "sair") break;
@@ -242,11 +252,11 @@ int Reversi::ExecutarPartida() {
         if (countX == countO) {
             std::cout << "Empate!\n";
         } else if (VerificarVitoria('X')) {
-            std::cout << "Jogador X venceu!\n";
-            return 1;
+            std::cout << ObterApelido('X') << " venceu!\n";
+        return 1;
         } else {
-            std::cout << "Jogador O venceu!\n";
-            return 2;
+            std::cout << ObterApelido('O') << " venceu!\n";
+        return 2;
         }
 }
 /**

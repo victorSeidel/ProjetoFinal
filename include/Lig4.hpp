@@ -27,6 +27,8 @@ class Lig4 : public JogoDeTabuleiro
 
     int ExecutarPartida() override;
 
+    void DefinirApelidos(const std::string& x, const std::string& o);
+
     private:
     /**
     * @brief Retorna true se algum jogador tiver feito uma sequência com 4.
@@ -37,6 +39,11 @@ class Lig4 : public JogoDeTabuleiro
     * @param jogador jogador 1 (X) ou jogador 2 (O)
     */
     bool VerificarDirecao(int linha, int coluna, int dLinha, int dColuna, char jogador) const;
+
+    std::string jogadorX;
+    std::string jogadorO;
+    std::string ObterApelido(char simbolo) const;
+
 };
 
 #endif

@@ -7,6 +7,17 @@
 
 JogoDaVelha::JogoDaVelha():JogoDeTabuleiro::JogoDeTabuleiro(3,3){}
 
+// Método para definir apelidos
+void JogoDaVelha::DefinirApelidos(const std::string& x, const std::string& o) {
+    jogadorX = x;
+    jogadorO = o;
+}
+
+// Método auxiliar para apelidos
+std::string JogoDaVelha::ObterApelido(char simbolo) const {
+    return (simbolo == 'X') ? jogadorX : jogadorO;
+}
+
 bool JogoDaVelha::VerificarVitoria(char j1) const {
     for (int i = 0; i < 3; ++i) {
         if ((tabuleiro[i][0] == j1 && tabuleiro[i][1] == j1 && tabuleiro[i][2] == j1) ||
@@ -50,7 +61,7 @@ bool JogoDaVelha::JogadaValida(int linha, int coluna) const {
 }
 
 int JogoDaVelha::ExecutarPartida() {
-    std::cout << "Jogador 1: X | Jogador 2: O\n";
+    std::cout << jogadorX << " (X) vs " << jogadorO << " (O)\n";
     int num_jogadas = 0;
 
     // Limpa o buffer residual antes de iniciar
@@ -62,7 +73,7 @@ int JogoDaVelha::ExecutarPartida() {
         char jogador_atual = (num_jogadas % 2 == 0) ? 'X' : 'O';
 
         while (true) {
-            std::cout << "Vez do Jogador " << ((jogador_atual == 'X') ? "1 (X)" : "2 (O)") << std::endl;
+            std::cout << "Vez de " << ObterApelido(jogador_atual) << std::endl;
             std::cout << "Digite linha e coluna (1-3): ";
 
             std::string entrada;
@@ -98,7 +109,7 @@ int JogoDaVelha::ExecutarPartida() {
 
         if (VerificarVitoria(jogador_atual)) {
             ImprimirTabuleiro();
-            std::cout << "Jogador " << ((jogador_atual == 'X') ? "1 (X)" : "2 (O)") << " ganhou!" << std::endl;
+            std::cout << ObterApelido(jogador_atual) << " ganhou!" << std::endl;
             Reiniciar();
             return (jogador_atual == 'X') ? 1 : 2;
         }
