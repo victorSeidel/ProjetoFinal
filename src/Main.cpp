@@ -4,20 +4,22 @@
 #include <sstream>
 #include <string>
 
-void exibirMenu() {
-    std::cout << "\nComandos disponíveis:\n";
-    std::cout << "CJ <Apelido> <Nome>        - Cadastrar jogador\n";
-    std::cout << "RJ <Apelido>               - Remover jogador\n";
-    std::cout << "LJ [A|N]                   - Listar jogadores ordenados\n";
-    std::cout << "EP <Jogo: R|L|V> <Jog1> <Jog2> - Executar partida\n";
-    std::cout << "FS                         - Finalizar sistema\n";
+void exibirMenu() 
+{
+    std::cout << "\n Comandos disponíveis: \n";
+    std::cout << "CJ <Apelido> <Nome>             - Cadastrar jogador. \n";
+    std::cout << "RJ <Apelido>                    - Remover jogador. \n";
+    std::cout << "LJ [A|N]                        - Listar jogadores ordenados. \n";
+    std::cout << "EP <Jogo: R|L|V> <Jog1> <Jog2>  - Executar partida. \n";
+    std::cout << "FS                              - Finalizar sistema. \n";
 }
 
-int main() {
+int main() 
+{
     CadastroJogadores cadastro;
     cadastro.carregarDoArquivo(); // Carrega dados ao iniciar
 
-    std::cout << "=== Sistema de Jogos de Tabuleiro ===\n";
+    std::cout << "===== Sistema de Jogos de Tabuleiro ===== \n";
     exibirMenu();
 
     std::string linha;
@@ -39,7 +41,7 @@ int main() {
             } 
             else
             {
-                std::cout << "ERRO: dados incorretos\n";
+                std::cout << "ERRO: Dados incorretos. \n";
             }
         } 
         else if (comando == "RJ") 
@@ -52,7 +54,7 @@ int main() {
             } 
             else 
             {
-                std::cout << "ERRO: dados incorretos\n";
+                std::cout << "ERRO: Dados incorretos. \n";
             }
         } 
         else if (comando == "LJ") 
@@ -65,7 +67,7 @@ int main() {
             } 
             else 
             {
-                std::cout << "ERRO: use 'LJ A' ou 'LJ N'\n";
+                std::cout << "ERRO: Use 'LJ A' ou 'LJ N.' \n";
             }
         } 
         else if (comando == "EP")
@@ -89,12 +91,12 @@ int main() {
                 Jogador& jogador2 = cadastro.getJogador(apelido2);
                 int codigoJogo;
 
-                if (jogo == "R") codigoJogo = 1;      // Reversi
+                if (jogo == "R")      codigoJogo = 1;      // Reversi
                 else if (jogo == "L") codigoJogo = 2; // Lig4
                 else if (jogo == "V") codigoJogo = 3; // Velha
                 else 
                 {
-                    std::cout << "ERRO: jogo inválido. Use R, L ou V\n";
+                    std::cout << "ERRO: Jogo inválido. Use R, L ou V\n";
                     continue;
                 }
 
@@ -137,7 +139,7 @@ int main() {
                 } 
                 else 
                 {
-                    std::cout << "ERRO: Formato incorreto. Use: EP <R|L|V> <apelido1> <apelido2>\n";
+                    std::cout << "ERRO: Formato incorreto. Use: EP <R|L|V> <apelido1> <apelido2>. \n";
                 }
             } 
         else if (comando == "FS") 
