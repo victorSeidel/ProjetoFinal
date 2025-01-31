@@ -4,7 +4,9 @@
 #include "JogoDeTabuleiro.hpp"
 #include <vector>
 #include <string>
-
+/**
+* @brief Classe que implenta o Reversi a partir da classe abstrata.
+*/
 class Reversi : public JogoDeTabuleiro {
 private:
     char jogadorAtual;
