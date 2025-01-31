@@ -23,6 +23,11 @@ public:
     virtual ~Reversi() override = default;
 
     void DefinirApelidos(const std::string& x, const std::string& o);
+/**
+* @brief Obtém o apelido de um jogador.
+* @param simbolo "X" ou "O" para representar cada jogador.
+* @return O apelido em si.
+*/
     std::string ObterApelido(char simbolo) const;
     // Métodos sobrescritos
     virtual int Jogar() override;
