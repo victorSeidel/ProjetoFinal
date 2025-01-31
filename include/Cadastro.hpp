@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include "Jogador.hpp"
+
 /**
 * @brief Classe que cuida do cadastro de jogadores. 
 */
