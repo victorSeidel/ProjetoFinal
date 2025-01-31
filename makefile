@@ -1,49 +1,28 @@
-# Compilador
-CXX = g++
-
-# Flags do compilador
-CXXFLAGS = -Wall -Wextra -std=c++17 -Iinclude
-
-# Diretórios
+CC = g++
+CFLAGS = -Wall -Wextra -Iinclude -std=c++11
 SRC_DIR = src
 OBJ_DIR = obj
 BIN_DIR = bin
+TARGET = $(BIN_DIR)/jogos
 
-# Lista de arquivos-fonte
-SRC_FILES = $(wildcard $(SRC_DIR)/*.cpp)
+SRC = $(wildcard $(SRC_DIR)/*.cpp)
+OBJ = $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC))
 
-# Lista de arquivos objeto
-OBJ_FILES = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC_FILES))
+.PHONY: all clean run
 
-# Nome do executável
-TARGET = $(BIN_DIR)/ProjetoFinal
+all: create_dirs $(TARGET)
 
-# Regra principal
-all: $(TARGET)
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) $^ -o $@
 
-# Compilação do executável
-$(TARGET): $(OBJ_FILES) | $(BIN_DIR)
-	$(CXX) $(CXXFLAGS) $^ -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
-# Compilação dos arquivos objeto
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+create_dirs:
+	@mkdir -p $(BIN_DIR) $(OBJ_DIR)
 
-# Criar diretórios se não existirem
-$(BIN_DIR) $(OBJ_DIR):
-	mkdir -p $@
-
-# Limpeza dos arquivos compilados
 clean:
 	rm -rf $(OBJ_DIR) $(BIN_DIR)
 
-# Remover apenas os objetos
-clean-obj:
-	rm -rf $(OBJ_DIR)
-
-# Recompilação total
-rebuild: clean all
-
-# Executar o programa
-run: all
+run: $(TARGET)
 	./$(TARGET)
